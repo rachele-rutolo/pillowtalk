@@ -1,0 +1,630 @@
+/* ==========================================================================
+   Pillowtalk · estilos propios de cada pantalla
+   Un bloque por pantalla, en el orden del recorrido de la demo.
+   ========================================================================== */
+
+/* ==========================================================================
+   #springboard · Pantalla de inicio del móvil
+   Imita un teléfono, no es interfaz de la app: no usa los estilos de texto.
+   ========================================================================== */
+
+#springboard { background: #25242d; }
+
+#springboard .screen__scroll { padding: 0; }
+
+.sb__hora {
+  margin: 70px 0 0;
+  font-size: 26px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+}
+
+.sb__fecha {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: #fff;
+  opacity: 0.7;
+  text-align: center;
+}
+
+.sb__rejilla {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px;
+  width: 330px;
+  margin: 56px auto 0;
+}
+
+.sb__app {
+  width: 62px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  background: none;
+  padding: 0;
+}
+
+.sb__app span {
+  font-size: 11px;
+  color: #fff;
+  text-align: center;
+  line-height: normal;
+}
+
+.sb__icono {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  background: #d4d4db;
+  opacity: 0.35;
+}
+
+.sb__app--apagada span { opacity: 0.6; }
+
+/* El icono de Pillowtalk. PROVISIONAL, igual que en Figma:
+   cuatro cartas giradas sobre el morado de marca. */
+.sb__icono--pillowtalk {
+  position: relative;
+  background: var(--brand-purple-300);
+  border: 0.5px solid #fff;
+  border-radius: 10px;
+  opacity: 1;
+  overflow: hidden;
+  box-shadow: inset 0 2px 3.5px rgba(64, 42, 182, 0.3);
+}
+
+.sb__icono--pillowtalk i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 34px;
+  border: 1.2px solid #111;
+  border-radius: 3px;
+  transform-origin: 50% 100%;
+}
+
+.sb__icono--pillowtalk i:nth-child(1) { background: var(--brand-lavender-300); transform: translate(-50%, -60%) rotate(-16deg); }
+.sb__icono--pillowtalk i:nth-child(2) { background: var(--brand-yellow-300); transform: translate(-50%, -60%) rotate(-5deg); }
+.sb__icono--pillowtalk i:nth-child(3) { background: var(--brand-coral-300); transform: translate(-50%, -60%) rotate(6deg); }
+.sb__icono--pillowtalk i:nth-child(4) { background: var(--brand-red-300); transform: translate(-50%, -60%) rotate(17deg); }
+
+.sb__nota {
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  top: 700px;
+  margin: 0;
+  font-size: 11px;
+  color: #fff;
+  opacity: 0.5;
+}
+
+/* ==========================================================================
+   #edad-terminos · Edad y términos
+   La pantalla no dice cuál es la edad mínima ni para qué se pide la fecha.
+   ========================================================================== */
+
+#edad-terminos .screen__scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: var(--space-2) var(--space-4) 0;
+}
+
+.edad__titular { margin: 0; color: var(--brand-lavender-1000); }
+
+.edad__fecha { display: flex; flex-direction: column; gap: 6px; }
+
+.edad__campos { display: flex; gap: 10px; }
+
+#edad-terminos .screen__pie {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-4) 40px;
+  flex: none;
+}
+
+.edad__aviso {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--base-black);
+}
+
+/* ==========================================================================
+   #home · Home (genérica y personalizada)
+   ========================================================================== */
+
+#home .screen__scroll {
+  padding: 60px var(--space-4) calc(var(--navbar-h) + 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* El disparador de demo: invisible, abre el modal de cuenta cuando el
+   presentador quiere, sin que se vea el clic. */
+.home__disparador {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  border: 0;
+  background: transparent;
+  z-index: 10;
+}
+
+/* La composición de mitos es irregular a propósito: las cards se
+   colocan donde las puso Figma, no en una rejilla. */
+.mitos {
+  position: relative;
+  width: 100%;
+  height: 323px;
+}
+
+.mitos .card-mito { position: absolute; }
+.mitos__ojos { position: absolute; width: 66px; }
+
+/* ==========================================================================
+   #crear-cuenta · #iniciar-sesion
+   ========================================================================== */
+
+#crear-cuenta .screen__scroll,
+#iniciar-sesion .screen__scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: var(--space-2) var(--space-4) 0;
+}
+
+.cuenta__titular { margin: 0; color: var(--brand-lavender-1000); }
+
+.cuenta__entradilla {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--content-tertiary);
+}
+
+.cuenta__accesos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+#crear-cuenta .screen__pie,
+#iniciar-sesion .screen__pie {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-4) 40px;
+  flex: none;
+}
+
+/* ==========================================================================
+   #onb-* · Onboarding
+   ========================================================================== */
+
+[id^="onb-"] .screen__scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: var(--space-2) var(--space-4) 0;
+}
+
+#onb-que-te-ha-traido .screen__scroll,
+#onb-resumen .screen__scroll { gap: 14px; }
+
+.onb__titular { margin: 0; color: var(--brand-lavender-1000); }
+
+.onb__entradilla {
+  margin: 0;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--content-tertiary);
+}
+
+.onb__aire { height: 30px; flex: none; }
+
+[id^="onb-"] .screen__pie {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-4) 40px;
+  flex: none;
+}
+
+/* ==========================================================================
+   #explorar · el mazo. Solo se desliza.
+   ========================================================================== */
+
+#explorar { background: var(--gray-100); }
+
+.explorar {
+  position: absolute;
+  inset: 0 0 var(--navbar-h) 0;
+  background: #4a4a4a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.mazo-swipe {
+  position: relative;
+  width: 292px;
+  height: 404px;
+}
+
+.carta {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 34px 28px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+  cursor: grab;
+  will-change: transform;
+  overflow: hidden;
+  user-select: none;
+  touch-action: none;
+  transition: transform 0.55s cubic-bezier(0.2, 0.85, 0.25, 1), opacity 0.4s ease;
+}
+
+.carta:active { cursor: grabbing; }
+
+.carta p {
+  margin: 0;
+  font-family: "Tiny Tiny", sans-serif;
+  font-size: 48px;
+  line-height: 0.85;
+  text-align: center;
+  word-break: break-word;
+}
+
+.explorar__controles { display: flex; align-items: center; gap: 24px; }
+
+.explorar__flecha {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-content: center;
+  border: 0;
+  background: none;
+  color: #fff;
+  transition: transform 0.12s ease;
+}
+
+.explorar__flecha:active { transform: scale(0.9); }
+
+.explorar__pista {
+  width: 100px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carta { transition: none; }
+}
+
+/* ==========================================================================
+   #home-detalle-mito
+   ========================================================================== */
+
+#home-detalle-mito .screen__scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 60px var(--space-4) calc(var(--navbar-h) + 40px);
+}
+
+.mito__textos { display: flex; flex-direction: column; gap: 12px; }
+.mito__cuerpo { margin: 0; font-size: 14px; line-height: 1.3; color: var(--gray-700); }
+
+/* ==========================================================================
+   #home-pregunta-dia
+   La pestaña encendida sigue siendo Home: se abre desde la home.
+   ========================================================================== */
+
+#home-pregunta-dia .screen__scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 60px var(--space-4) calc(var(--navbar-h) + 40px);
+}
+
+/* ==========================================================================
+   #biblioteca
+   ========================================================================== */
+
+#biblioteca .screen__scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 60px var(--space-4) calc(var(--navbar-h) + 80px);
+}
+
+/* ==========================================================================
+   #biblioteca-busqueda-activa · #busqueda-con-resultados · #busqueda-sin-resultados
+   ========================================================================== */
+
+#biblioteca-busqueda-activa .screen__scroll,
+#busqueda-con-resultados .screen__scroll,
+#busqueda-sin-resultados .screen__scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 60px var(--space-4) calc(var(--navbar-h) + 40px);
+}
+
+/* ==========================================================================
+   #biblioteca-favoritos · #biblioteca-ver-mas-tarde
+   ========================================================================== */
+
+#biblioteca-favoritos .screen__scroll,
+#biblioteca-ver-mas-tarde .screen__scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 60px var(--space-4) calc(var(--navbar-h) + 40px);
+}
+
+.lista__titular { margin: 0; color: var(--base-black); }
+
+/* ==========================================================================
+   #contenido-articulo · #contenido-video · #contenido-podcast
+   ========================================================================== */
+
+#contenido-articulo .screen__scroll,
+#contenido-video .screen__scroll,
+#contenido-podcast .screen__scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 60px var(--space-4) calc(var(--navbar-h) + 40px);
+}
+
+/* ---------- #contenido-video ---------- */
+
+.screen__scroll--sin-margen { padding: 0 0 calc(var(--navbar-h) + 40px) !important; }
+
+.video__cabecera { position: relative; width: 100%; height: 220px; }
+.video__miniatura { width: 100%; height: 100%; }
+
+.video__play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.video__duracion {
+  position: absolute;
+  left: 16px;
+  bottom: 20px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: var(--base-black);
+  color: var(--base-white);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+/* Este atrás va encima de la miniatura, así que lleva fondo para que se
+   lea sobre cualquier imagen. */
+.video__atras {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(14, 10, 18, 0.45);
+  backdrop-filter: blur(2px);
+  color: var(--base-white);
+}
+
+.video__cuerpo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 4px var(--space-4) 20px;
+}
+
+/* ---------- #contenido-podcast ---------- */
+
+#contenido-podcast .screen__scroll { align-items: center; }
+
+.podcast__fila-atras { width: 100%; display: flex; }
+
+.podcast__portada {
+  width: 240px;
+  height: 240px;
+  border-radius: var(--radius-lg);
+  flex: none;
+}
+
+.podcast__cabecera { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 100%; text-align: center; }
+#contenido-podcast .contenido__meta { text-align: center; width: 100%; }
+
+/* ==========================================================================
+   #reproductor · el teléfono girado, 844 × 390
+   ========================================================================== */
+
+#reproductor { background: #4a4a4a; }
+
+.reproductor { position: absolute; inset: 0; color: var(--base-white); }
+
+.reproductor__barra-superior {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+}
+
+.reproductor__barra-superior .btn-atras { color: var(--base-white); }
+.reproductor__textos { display: flex; flex-direction: column; gap: 4px; }
+.reproductor__titulo { font-size: 14px; font-weight: 600; line-height: 1.4; }
+.reproductor__autor { font-size: 10px; line-height: 1.4; color: #bfbfbf; }
+
+.reproductor__controles {
+  position: absolute;
+  left: 50%;
+  top: 187px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.reproductor__control {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-content: center;
+  border: 1.2px solid var(--base-white);
+  border-radius: 24px;
+  background: none;
+  color: var(--base-white);
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.reproductor__control--grande { width: 64px; height: 64px; border-radius: 32px; }
+
+.reproductor__pausa { display: flex; gap: 6px; }
+.reproductor__pausa i { width: 4px; height: 18px; border-radius: 1px; background: var(--base-white); }
+
+.reproductor__barra-inferior {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 20px 16px;
+}
+
+.reproductor__progreso { height: 3px; border-radius: 2px; background: #8c8c8c; overflow: hidden; }
+.reproductor__progreso span { display: block; height: 100%; border-radius: 2px; background: var(--base-white); }
+
+.reproductor__tiempos {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--gray-300);
+}
+
+.reproductor__hueco { flex: 1 1 0; }
+
+.reproductor__salir {
+  width: 14px;
+  height: 12px;
+  border: 1.2px solid var(--base-white);
+  background: none;
+  padding: 0;
+}
+
+/* ==========================================================================
+   #perfil · #perfil-datos
+   ========================================================================== */
+
+#perfil .screen__scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 60px var(--space-4) calc(var(--navbar-h) + 40px);
+}
+
+.perfil__titular { margin: 0 0 16px; color: var(--base-black); }
+
+.perfil__cabecera { display: flex; flex-direction: column; gap: 6px; margin-bottom: 22px; }
+.perfil__clave { font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--base-black); }
+.perfil__valor { font-size: 10px; line-height: 1.4; color: var(--content-tertiary); }
+
+.perfil__filas { width: 100%; }
+
+.fila-perfil {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 0;
+  border: 0;
+  border-bottom: 1px solid var(--gray-300);
+  background: none;
+  text-align: left;
+}
+
+.fila-perfil__textos { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+.fila-perfil__titulo { font-size: 14px; line-height: 1.3; color: var(--base-black); }
+.fila-perfil__detalle { font-size: 10px; line-height: 1.4; color: var(--content-tertiary); }
+.fila-perfil__flecha { flex: none; font-size: 10px; color: var(--content-tertiary); }
+
+#perfil-datos .screen__scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: var(--space-2) var(--space-4) 40px;
+}
+
+.permiso__titulo--normal { font-weight: 400; }
+
+/* ==========================================================================
+   #perfil-ajustes
+   ========================================================================== */
+
+#perfil-ajustes .screen__scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: var(--space-2) var(--space-4) 40px;
+}
+
+#perfil-ajustes .fila-perfil[hidden] { display: none; }
+
+/* ==========================================================================
+   #perfil-notificaciones
+   ========================================================================== */
+
+#perfil-notificaciones .screen__scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: var(--space-2) var(--space-4) 40px;
+}
+
+/* Las dos listas guardadas se pintan desde el estado. */
+.lista-guardados { display: flex; flex-direction: column; gap: 12px; width: 100%; }
