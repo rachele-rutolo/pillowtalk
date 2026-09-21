@@ -31,11 +31,6 @@ media/              audio y vídeo cortos del reproductor
 docs/               la spec de construcción
 ```
 
-## Navegación
-
-Un botón navega con `data-ir="id-de-pantalla"`, vuelve con `data-atras`,
-abre una hoja inferior con `data-abre="modal-cuenta"` y la cierra con `data-cierra`.
-No hace falta escribir JavaScript para cablear una pantalla nueva.
 
 ## Barra de desarrollo
 
@@ -43,8 +38,3 @@ Arriba a la izquierda hay un desplegable para saltar a cualquier pantalla y ver
 el estado de la sesión. Se oculta y se muestra con la tecla **D**. No forma parte
 de la demo.
 
-## Lo que aún no está
-
-Las pantallas marcadas **sin montar** son estructura vacía: navegan, pero no
-tienen contenido de Figma. Tampoco están las imágenes, los iconos definitivos,
-el icono de la app ni los archivos de audio y vídeo.
