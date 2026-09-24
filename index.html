@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pillowtalk · prototipo V4</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/screens.css">
+</head>
+
+<body>
+
+<!-- Barra de desarrollo. No forma parte de la demo: se oculta con la tecla D. -->
+<div class="devbar" id="devbar">
+  <label for="dev-select" class="sr-only">Ir a una pantalla</label>
+  <select id="dev-select"></select>
+  <button type="button" id="dev-reset">Reiniciar</button>
+  <span id="dev-estado"></span>
+</div>
+
+<main class="device" data-orientation="portrait">
+
+  <!-- ===================== ENTRADA ===================== -->
+
+  <section class="screen" id="springboard" aria-label="Pantalla de inicio del móvil">
+    <div class="screen__scroll">
+      <p class="sb__hora">9:41</p>
+      <p class="sb__fecha">martes 14</p>
+
+      <div class="sb__rejilla">
+        <div class="sb__app sb__app--apagada"><span class="sb__icono"></span><span>Notas</span></div>
+        <div class="sb__app sb__app--apagada"><span class="sb__icono"></span><span>Tiempo</span></div>
+        <div class="sb__app sb__app--apagada"><span class="sb__icono"></span><span>Cámara</span></div>
+        <div class="sb__app sb__app--apagada"><span class="sb__icono"></span><span>Ajustes</span></div>
+        <div class="sb__app sb__app--apagada"><span class="sb__icono"></span><span>Mapas</span></div>
+        <div class="sb__app sb__app--apagada"><span class="sb__icono"></span><span>Música</span></div>
+        <div class="sb__app sb__app--apagada"><span class="sb__icono"></span><span>Salud</span></div>
+        <div class="sb__app sb__app--apagada"><span class="sb__icono"></span><span>Calendario</span></div>
+
+        <button type="button" class="sb__app" data-ir="edad-terminos">
+          <img class="sb__icono sb__icono--pillowtalk" src="assets/icons/pillowtalk-app.png" alt="">
+          <span>Pillowtalk</span>
+        </button>
+
+        <div class="sb__app sb__app--apagada"><span class="sb__icono"></span><span>Reloj</span></div>
+        <div class="sb__app sb__app--apagada"><span class="sb__icono"></span><span>Libros</span></div>
+        <div class="sb__app sb__app--apagada"><span class="sb__icono"></span><span>Podcasts</span></div>
+      </div>
+
+      <p class="sb__nota">Tocar el icono de Pillowtalk abre la app en la pantalla 01.</p>
+    </div>
+  </section>
+
+  <section class="screen" id="edad-terminos" aria-label="Edad y términos" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true">
+          <path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <span class="cabecera__spacer"></span>
+    </header>
+
+    <div class="screen__scroll">
+      <h1 class="t-titular-l edad__titular">Antes de entrar</h1>
+
+      <div class="edad__fecha">
+        <span class="campo__label" id="edad-label">Fecha de nacimiento</span>
+        <div class="edad__campos" role="group" aria-labelledby="edad-label">
+          <div class="campo">
+            <label class="sr-only" for="edad-dd">Día</label>
+            <input class="campo__input" id="edad-dd" name="dd" type="text" inputmode="numeric" maxlength="2" placeholder="DD" autocomplete="bday-day">
+          </div>
+          <div class="campo">
+            <label class="sr-only" for="edad-mm">Mes</label>
+            <input class="campo__input" id="edad-mm" name="mm" type="text" inputmode="numeric" maxlength="2" placeholder="MM" autocomplete="bday-month">
+          </div>
+          <div class="campo">
+            <label class="sr-only" for="edad-aaaa">Año</label>
+            <input class="campo__input" id="edad-aaaa" name="aaaa" type="text" inputmode="numeric" maxlength="4" placeholder="AAAA" autocomplete="bday-year">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="screen__pie">
+      <label class="check">
+        <input type="checkbox" id="edad-terminos-check">
+        <span>He leído y acepto los <button type="button" class="enlace" data-ir="terminos-uso">términos de uso</button> y la <button type="button" class="enlace" data-ir="politica-privacidad">política de privacidad</button></span>
+      </label>
+      <button type="button" class="btn btn--primario" id="edad-entrar" data-ir="home">Entrar</button>
+      <p class="edad__aviso">Este dato es obligatorio.</p>
+    </footer>
+  </section>
+
+  <!-- Términos de uso · texto de demostración, sin validez legal -->
+  <section class="screen" id="terminos-uso" aria-label="Términos de uso" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="cabecera__spacer"></span>
+    </header>
+    <div class="screen__scroll">
+      <h1 class="t-titular-l onb__titular">Términos de uso</h1>
+      <div class="legal">
+        <h2 class="legal__apartado">Qué es Pillowtalk</h2>
+        <p>Pillowtalk es una app de educación sexual para personas adultas. Su contenido tiene autoría o revisión profesional identificable y sirve para informarse, no sustituye una consulta médica ni psicológica.</p>
+        <h2 class="legal__apartado">Quién puede usarla</h2>
+        <p>La app es solo para mayores de 18 años. Al entrar declaras tu fecha de nacimiento y confirmas que es cierta.</p>
+        <h2 class="legal__apartado">Cuenta</h2>
+        <p>Puedes usar la app sin cuenta. La cuenta es opcional y sirve para que lo que guardas y respondes no se pierda al cambiar de móvil. Puedes borrarla cuando quieras desde Ajustes.</p>
+        <h2 class="legal__apartado">Uso del contenido</h2>
+        <p>El contenido es para uso personal. No se puede copiar ni distribuir sin permiso de sus autores.</p>
+        <h2 class="legal__apartado">Cambios</h2>
+        <p>Si estos términos cambian, te lo diremos dentro de la app antes de que se apliquen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Política de privacidad · texto de demostración, sin validez legal -->
+  <section class="screen" id="politica-privacidad" aria-label="Política de privacidad" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="cabecera__spacer"></span>
+    </header>
+    <div class="screen__scroll">
+      <h1 class="t-titular-l onb__titular">Política de privacidad</h1>
+      <div class="legal">
+        <h2 class="legal__apartado">Por qué pedimos tu fecha de nacimiento</h2>
+        <p>Porque la app es solo para mayores de 18 años. Es el único dato obligatorio para entrar.</p>
+        <h2 class="legal__apartado">Qué datos tratamos</h2>
+        <p>Solo los que decides darnos: tu nombre, cómo quieres que te hablemos y, si das permiso, tus respuestas del onboarding y lo que haces en la app (búsquedas, guardados y respuestas a la pregunta del día).</p>
+        <p>Algunos de estos datos son de categoría especial según el RGPD (art. 9), como la orientación sexual o la vida sexual. Solo los tratamos con tu consentimiento explícito, que pedimos por separado y antes de recogerlos.</p>
+        <h2 class="legal__apartado">Dónde se guardan</h2>
+        <p>Si no tienes cuenta, tus datos se quedan solo en tu dispositivo. Al desinstalar la app, se borran.</p>
+        <p>Si creas cuenta, se guardan asociados a ella para que no los pierdas al cambiar de móvil.</p>
+        <h2 class="legal__apartado">Tus derechos</h2>
+        <p>Puedes ver, cambiar o borrar tus datos desde Perfil · Datos, retirar cada permiso por separado y borrar tu cuenta desde Ajustes.</p>
+        <p>No compartimos tus datos con terceros ni los usamos para publicidad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOME ===================== -->
+
+  <section class="screen screen--tabbed" id="home" aria-label="Home" hidden>
+
+    <!-- Recurso de demo: abre el modal de cuenta sin que se vea el clic. -->
+    <button type="button" class="home__disparador" data-abre="modal-cuenta"
+            aria-label="Abrir la invitación a crear cuenta"></button>
+
+    <div class="screen__scroll">
+
+      <!-- Entrada al mazo -->
+      <section class="seccion">
+        <div class="mazo">
+          <button type="button" class="entrada-mazo" data-ir="explorar">
+            <span class="entrada-mazo__titular">Una pregunta al azar que quizá no te habías hecho</span>
+            <span class="entrada-mazo__accion">Sacar una carta →</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Mitos: la composición irregular de Figma. Cada forma es un
+           trazado dibujado a mano y se elige por la longitud del texto;
+           el tamaño no indica jerarquía entre mitos. -->
+      <section class="seccion">
+        <h2 class="seccion__titulo">Seguro que no lo sabías</h2>
+        <div class="mitos">
+          <button type="button" class="card-mito card-mito--2" data-ir="home-detalle-mito" style="left:167px; top:0">La penetración basta para el orgasmo</button>
+          <button type="button" class="card-mito card-mito--3" data-ir="home-detalle-mito" style="left:0; top:6px">El himen se rompe la primera vez</button>
+          <button type="button" class="card-mito card-mito--3" data-ir="home-detalle-mito" style="left:0; top:124px">El himen se rompe la primera vez</button>
+          <button type="button" class="card-mito card-mito--2" data-ir="home-detalle-mito" style="left:170px; top:122px">La penetración basta para el orgasmo</button>
+          <button type="button" class="card-mito card-mito--5" data-ir="home-detalle-mito" style="left:130px; top:242px">Si tu cuerpo responde, es que te apetece</button>
+          <img class="mitos__ojos" src="assets/icons/ojos.png" alt="" style="left:27px; top:245px">
+        </div>
+      </section>
+
+      <!-- Pregunta del día -->
+      <section class="seccion">
+        <h2 class="seccion__titulo">Hazte la pregunta</h2>
+        <div class="card-pregunta" id="pregunta-dia">
+          <img class="card-pregunta__chincheta" src="assets/icons/pin.png" alt="">
+          <p class="card-pregunta__titular">¿Cómo notas que algo te apetece?</p>
+          <ul class="card-pregunta__opciones">
+            <li><button type="button" class="opcion" style="--opcion-color: var(--brand-red-200)" aria-pressed="false">Lo noto en el cuerpo</button></li>
+            <li><button type="button" class="opcion" style="--opcion-color: var(--brand-lavender-200)" aria-pressed="false">Me entra curiosidad y ya</button></li>
+            <li><button type="button" class="opcion" style="--opcion-color: var(--brand-purple-200)" aria-pressed="false">Cuando estoy a gusto y sin prisa</button></li>
+            <li><button type="button" class="opcion" style="--opcion-color: var(--brand-yellow-200)" aria-pressed="false">Casi nunca sabría decirlo</button></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Vídeos -->
+      <section class="seccion">
+        <h2 class="seccion__titulo">Vídeos que podrían gustarte</h2>
+        <div class="fila">
+          <button type="button" data-contenido="video-clitoris" class="card-video" data-ir="contenido-video">
+            <span class="card-video__miniatura sin-imagen">falta imagen</span>
+            <span class="card-video__titulo">El clítoris entero, en 3 minutos</span>
+            <span class="card-video__meta">Nombre de la autora · vídeo · 3:10</span>
+          </button>
+          <button type="button" data-contenido="video-lubricarse" class="card-video" data-ir="contenido-video">
+            <span class="card-video__miniatura sin-imagen">falta imagen</span>
+            <span class="card-video__titulo">Lubricarse no es un examen</span>
+            <span class="card-video__meta">Nombre de la autora · vídeo · 4:05</span>
+          </button>
+          <button type="button" data-contenido="video-yo-tampoco-video" class="card-video" data-ir="contenido-video">
+            <span class="card-video__miniatura sin-imagen">falta imagen</span>
+            <span class="card-video__titulo">Yo tampoco sabía</span>
+            <span class="card-video__meta">Nombre de la autora · vídeo · 2:48</span>
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <section class="screen screen--tabbed" id="home-pregunta-dia" aria-label="Pregunta del día" hidden>
+    <div class="screen__scroll">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+
+      <section class="seccion">
+        <h2 class="seccion__titulo">Hazte la pregunta</h2>
+        <div class="card-pregunta" id="pregunta-dia-detalle">
+          <img class="card-pregunta__chincheta" src="assets/icons/pin.png" alt="">
+          <p class="card-pregunta__titular">¿Cómo notas que algo te apetece?</p>
+          <ul class="card-pregunta__opciones">
+            <li><button type="button" class="opcion" style="--opcion-color: var(--brand-red-200)" aria-pressed="false">Lo noto en el cuerpo</button></li>
+            <li><button type="button" class="opcion" style="--opcion-color: var(--brand-lavender-200)" aria-pressed="false">Me entra curiosidad y ya</button></li>
+            <li><button type="button" class="opcion" style="--opcion-color: var(--brand-purple-200)" aria-pressed="false">Cuando estoy a gusto y sin prisa</button></li>
+            <li><button type="button" class="opcion" style="--opcion-color: var(--brand-yellow-200)" aria-pressed="false">Casi nunca sabría decirlo</button></li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="mito__textos">
+        <h2 class="seccion__titulo">Descubre más</h2>
+        <p class="mito__cuerpo">Antes de decidir, pasa algo. A veces es físico, a veces es pura curiosidad, a veces es que te sientes a gusto y ya. Identificar tu propia señal sirve para dos cosas: para pedir y para saber cuándo la respuesta es no.</p>
+      </div>
+
+      <h2 class="seccion__titulo">Contenido relacionado</h2>
+      <div class="fila">
+        <button type="button" data-contenido="video-clitoris" class="card-video card-video--pequena" data-ir="contenido-video">
+          <span class="card-video__miniatura sin-imagen">falta imagen</span>
+          <span class="card-video__titulo">El clítoris entero, en 3 minutos</span>
+          <span class="card-video__meta">Nombre de la autora · vídeo · 3:10</span>
+        </button>
+        <button type="button" data-contenido="video-lubricarse" class="card-video card-video--pequena" data-ir="contenido-video">
+          <span class="card-video__miniatura sin-imagen">falta imagen</span>
+          <span class="card-video__titulo">Lubricarse no es un examen</span>
+          <span class="card-video__meta">Nombre de la autora · vídeo · 4:05</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CUENTA ===================== -->
+
+  <section class="screen" id="crear-cuenta" aria-label="Crear cuenta" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true">
+          <path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <span class="cabecera__spacer"></span>
+    </header>
+
+    <div class="screen__scroll">
+      <h1 class="t-titular-l cuenta__titular">Crear cuenta</h1>
+      <p class="cuenta__entradilla">Para que lo tuyo te siga.</p>
+
+      <div class="cuenta__accesos">
+        <button type="button" class="btn" data-via="google" data-ir="onb-inicio">
+          <img class="icono-marca" src="assets/icons/google.png" alt="">Continuar con Google
+        </button>
+        <button type="button" class="btn" data-via="apple" data-ir="onb-inicio">
+          <img class="icono-marca" src="assets/icons/apple.png" alt="">Continuar con Apple
+        </button>
+      </div>
+
+      <div class="separador"><span>o</span></div>
+
+      <div class="campo campo--ancho">
+        <label class="campo__label campo__label--fuerte" for="cc-correo">Correo</label>
+        <input class="campo__input" id="cc-correo" type="email" placeholder="tu@correo.com" autocomplete="email">
+      </div>
+
+      <div class="campo campo--ancho">
+        <label class="campo__label campo__label--fuerte" for="cc-pass">Contraseña</label>
+        <div class="campo__conjunto">
+          <input class="campo__input" id="cc-pass" type="password" placeholder="Mínimo 8 caracteres" autocomplete="new-password">
+          <button type="button" class="campo__ojo" data-ojo="cc-pass" aria-label="Mostrar la contraseña" aria-pressed="false">
+            <img class="campo__ojo-icono" src="assets/icons/eye.png" alt="">
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="screen__pie">
+      <button type="button" class="btn btn--primario" data-via="correo" data-ir="onb-inicio">Crear cuenta</button>
+      <button type="button" class="btn btn--texto" data-ir="iniciar-sesion">Ya tengo cuenta</button>
+    </footer>
+  </section>
+
+  <section class="screen" id="iniciar-sesion" aria-label="Iniciar sesión" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true">
+          <path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <span class="cabecera__spacer"></span>
+    </header>
+
+    <div class="screen__scroll">
+      <h1 class="t-titular-l cuenta__titular">Iniciar sesión</h1>
+
+      <div class="cuenta__accesos">
+        <button type="button" class="btn" data-via="google" data-entrar-sesion>
+          <img class="icono-marca" src="assets/icons/google.png" alt="">Continuar con Google
+        </button>
+        <button type="button" class="btn" data-via="apple" data-entrar-sesion>
+          <img class="icono-marca" src="assets/icons/apple.png" alt="">Continuar con Apple
+        </button>
+      </div>
+
+      <div class="separador"><span>o</span></div>
+
+      <div class="campo campo--ancho">
+        <label class="campo__label campo__label--fuerte" for="is-correo">Correo</label>
+        <input class="campo__input" id="is-correo" type="email" placeholder="tu@correo.com" autocomplete="email">
+      </div>
+
+      <div class="campo campo--ancho">
+        <label class="campo__label campo__label--fuerte" for="is-pass">Contraseña</label>
+        <div class="campo__conjunto">
+          <input class="campo__input" id="is-pass" type="password" placeholder="Mínimo 8 caracteres" autocomplete="current-password">
+          <button type="button" class="campo__ojo" data-ojo="is-pass" aria-label="Mostrar la contraseña" aria-pressed="false">
+            <img class="campo__ojo-icono" src="assets/icons/eye.png" alt="">
+          </button>
+        </div>
+      </div>
+
+      <p class="estado-error" id="sesion-error" role="alert" hidden>Ese correo y esa contraseña no coinciden.</p>
+    </div>
+
+    <footer class="screen__pie">
+      <button type="button" class="btn btn--primario" id="sesion-entrar" data-via="correo">Entrar</button>
+      <button type="button" class="btn btn--texto" data-ir="crear-cuenta">¿No tienes cuenta? Crear cuenta</button>
+    </footer>
+  </section>
+
+  <!-- ===================== ONBOARDING · PARTE 1 =====================
+       Este tramo es igual de largo para todo el mundo. Nada de lo que se
+       pregunta aquí es dato de categoría especial. =================== -->
+
+  <section class="screen" id="onb-inicio" aria-label="Onboarding · inicio" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="cabecera__spacer"></span>
+    </header>
+    <div class="screen__scroll">
+      <div class="onb__aire"></div>
+      <h1 class="t-titular-l onb__titular">Cuatro preguntas y esto deja de ser un catálogo</h1>
+      <p class="onb__entradilla">Sirven para no enseñarte cosas que no tienen nada que ver contigo. Se pueden saltar todas y se cambian cuando quieras.</p>
+      <div class="tarjeta">
+        <p class="onb__entradilla">Primero: cómo te llamamos y cómo nos dirigimos a ti.</p>
+        <hr class="tarjeta__linea">
+        <p class="onb__entradilla">Después, si quieres: lo que te interesa y lo que te ha traído aquí.</p>
+      </div>
+    </div>
+    <footer class="screen__pie">
+      <button type="button" class="btn btn--primario" data-ir="onb-nombre">Empezar</button>
+      <button type="button" class="btn btn--texto" data-ir="home">Saltar</button>
+    </footer>
+  </section>
+
+  <section class="screen" id="onb-nombre" aria-label="Onboarding · nombre" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="cabecera__spacer"></span>
+      <button type="button" class="cabecera__saltar" data-ir="onb-pronombres">Saltar</button>
+    </header>
+    <div class="avance"><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg"></span><span class="avance__seg"></span></div>
+    <div class="screen__scroll">
+      <h1 class="t-titular-l onb__titular">¿Cómo te llamamos?</h1>
+      <p class="onb__entradilla">Lo que te apetezca leer aquí dentro.</p>
+      <div class="campo campo--ancho">
+        <label class="campo__label campo__label--fuerte" for="onb-nombre-campo">Nombre</label>
+        <input class="campo__input" id="onb-nombre-campo" type="text" placeholder="Lola" autocomplete="given-name">
+      </div>
+      <p class="onb__entradilla">Si has entrado con Google o Apple, este campo llega ya relleno y se puede cambiar.</p>
+    </div>
+    <footer class="screen__pie">
+      <button type="button" class="btn btn--primario" data-ir="onb-pronombres">Continuar</button>
+    </footer>
+  </section>
+
+  <section class="screen" id="onb-pronombres" aria-label="Onboarding · pronombres" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="cabecera__spacer"></span>
+      <button type="button" class="cabecera__saltar" data-ir="onb-permisos">Saltar</button>
+    </header>
+    <div class="avance"><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg"></span></div>
+    <div class="screen__scroll">
+      <h1 class="t-titular-l onb__titular">¿Cómo te hablamos?</h1>
+      <p class="onb__entradilla">Esto solo cambia cómo te hablamos. Si la saltas, te hablamos sin marcar género.</p>
+      <div class="checks" data-guarda="pronombres">
+        <label class="check"><input type="checkbox" value="Ella"><span>Ella</span></label>
+        <label class="check"><input type="checkbox" value="Él"><span>Él</span></label>
+        <label class="check"><input type="checkbox" value="Elle"><span>Elle</span></label>
+        <label class="check"><input type="checkbox" value="Sin género"><span>Sin género</span></label>
+      </div>
+      <!-- Oculto por ahora: campo para proponer otro pronombre
+      <div class="campo campo--ancho">
+        <label class="sr-only" for="pronombres-propuesta">Propón otro pronombre</label>
+        <input class="campo__input" id="pronombres-propuesta" type="text" placeholder="Propón otro pronombre">
+      </div>
+      -->
+    </div>
+    <footer class="screen__pie">
+      <button type="button" class="btn btn--primario" data-ir="onb-permisos">Continuar</button>
+    </footer>
+  </section>
+
+  <!-- Los dos interruptores son independientes de verdad (PRD 6.4).
+       El ramo depende solo del primero. -->
+  <section class="screen" id="onb-permisos" aria-label="Onboarding · permisos" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="cabecera__spacer"></span>
+    </header>
+    <div class="avance"><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg avance__seg--hecho"></span></div>
+    <div class="screen__scroll">
+      <h1 class="t-titular-l onb__titular">Dos permisos</h1>
+      <p class="onb__entradilla">Los dos se pueden dejar apagados. La app funciona igual y verás el mismo contenido que todo el mundo.</p>
+      <div class="permisos">
+        <div class="permiso">
+          <div class="permiso__textos">
+            <label class="permiso__titulo" for="permiso-respuestas">Guardar y usar tus respuestas</label>
+            <p class="permiso__detalle">Guardamos lo que respondas ahora (identidad, orientación, situación, temas y qué te ha traído) y lo usamos para elegir el contenido que te proponemos. Si lo dejas apagado, no te hacemos estas preguntas.</p>
+          </div>
+          <label class="interruptor">
+            <input type="checkbox" id="permiso-respuestas">
+            <span class="interruptor__pista" aria-hidden="true"></span>
+          </label>
+        </div>
+        <div class="permiso">
+          <div class="permiso__textos">
+            <label class="permiso__titulo" for="permiso-uso">Guardar y usar tu actividad en la app</label>
+            <p class="permiso__detalle">Guardamos lo que buscas, lo que guardas y lo que respondes a la pregunta del día, y lo usamos para ajustar lo que te proponemos. Si lo dejas apagado, no guardamos nada de lo que haces.</p>
+          </div>
+          <label class="interruptor">
+            <input type="checkbox" id="permiso-uso">
+            <span class="interruptor__pista" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+      <p class="onb__entradilla">Puedes cambiarlos cuando quieras desde tu perfil.</p>
+    </div>
+    <footer class="screen__pie">
+      <button type="button" class="btn btn--primario" id="permisos-continuar">Continuar</button>
+    </footer>
+  </section>
+
+  <!-- ===================== ONBOARDING · PARTE 2 =====================
+       Solo existe si el primer permiso está encendido. Todo se puede omitir. -->
+
+  <section class="screen" id="onb-identidad" aria-label="Onboarding · identidad" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="cabecera__spacer"></span>
+      <button type="button" class="cabecera__saltar" data-ir="onb-orientacion">Saltar</button>
+    </header>
+    <div class="avance"><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg"></span><span class="avance__seg"></span><span class="avance__seg"></span><span class="avance__seg"></span></div>
+    <div class="screen__scroll">
+      <h1 class="t-titular-l onb__titular">¿Cómo te identificas?</h1>
+      <div class="radios" role="radiogroup" aria-label="Identidad" data-guarda="identidad">
+        <label class="radio"><input type="radio" name="identidad" value="Mujer"><span>Mujer</span></label>
+        <label class="radio"><input type="radio" name="identidad" value="Hombre"><span>Hombre</span></label>
+        <label class="radio"><input type="radio" name="identidad" value="No binario"><span>No binario</span></label>
+        <label class="radio"><input type="radio" name="identidad" value="Género fluido"><span>Género fluido</span></label>
+        <label class="radio"><input type="radio" name="identidad" value="Prefiero describirlo yo"><span>Prefiero describirlo yo</span></label>
+      </div>
+      <div class="campo campo--ancho" data-describirlo hidden>
+        <label class="sr-only" for="identidad-libre">Descríbelo con tus palabras</label>
+        <input class="campo__input" id="identidad-libre" type="text" placeholder="Escríbelo con tus palabras">
+      </div>
+    </div>
+    <footer class="screen__pie">
+      <button type="button" class="btn btn--primario" data-ir="onb-orientacion">Continuar</button>
+    </footer>
+  </section>
+
+  <section class="screen" id="onb-orientacion" aria-label="Onboarding · orientación" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="cabecera__spacer"></span>
+      <button type="button" class="cabecera__saltar" data-ir="onb-estado-relacional">Saltar</button>
+    </header>
+    <div class="avance"><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg"></span><span class="avance__seg"></span><span class="avance__seg"></span></div>
+    <div class="screen__scroll">
+      <h1 class="t-titular-l onb__titular">¿Y tu orientación?</h1>
+      <p class="onb__entradilla">Marca las que quieras.</p>
+      <div class="chips" data-guarda="orientacion">
+        <button type="button" class="chip" aria-pressed="false">Heterosexual</button>
+        <button type="button" class="chip" aria-pressed="false">Gay</button>
+        <button type="button" class="chip" aria-pressed="false">Lesbiana</button>
+        <button type="button" class="chip" aria-pressed="false">Bisexual</button>
+        <button type="button" class="chip" aria-pressed="false">Pansexual</button>
+        <button type="button" class="chip" aria-pressed="false">Asexual</button>
+        <button type="button" class="chip" aria-pressed="false">Queer</button>
+        <button type="button" class="chip" aria-pressed="false">Prefiero describirlo yo</button>
+      </div>
+      <div class="campo campo--ancho" data-describirlo hidden>
+        <label class="sr-only" for="orientacion-libre">Descríbelo con tus palabras</label>
+        <input class="campo__input" id="orientacion-libre" type="text" placeholder="Escríbelo con tus palabras">
+      </div>
+    </div>
+    <footer class="screen__pie">
+      <button type="button" class="btn btn--primario" data-ir="onb-estado-relacional">Continuar</button>
+    </footer>
+  </section>
+
+  <section class="screen" id="onb-estado-relacional" aria-label="Onboarding · estado relacional" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="cabecera__spacer"></span>
+      <button type="button" class="cabecera__saltar" data-ir="onb-temas">Saltar</button>
+    </header>
+    <div class="avance"><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg"></span><span class="avance__seg"></span></div>
+    <div class="screen__scroll">
+      <h1 class="t-titular-l onb__titular">¿Cómo estás ahora mismo?</h1>
+      <div class="radios" role="radiogroup" aria-label="Situación" data-guarda="estadoRelacional">
+        <label class="radio"><input type="radio" name="situacion" value="Sin pareja"><span>Sin pareja</span></label>
+        <label class="radio"><input type="radio" name="situacion" value="En pareja monógama"><span>En pareja monógama</span></label>
+        <label class="radio"><input type="radio" name="situacion" value="Pareja abierta"><span>Pareja abierta</span></label>
+        <label class="radio"><input type="radio" name="situacion" value="Poliamor"><span>Poliamor</span></label>
+        <label class="radio"><input type="radio" name="situacion" value="Prefiero describirlo yo"><span>Prefiero describirlo yo</span></label>
+      </div>
+      <div class="campo campo--ancho" data-describirlo hidden>
+        <label class="sr-only" for="situacion-libre">Descríbelo con tus palabras</label>
+        <input class="campo__input" id="situacion-libre" type="text" placeholder="Escríbelo con tus palabras">
+      </div>
+    </div>
+    <footer class="screen__pie">
+      <button type="button" class="btn btn--primario" data-ir="onb-temas">Continuar</button>
+    </footer>
+  </section>
+
+  <section class="screen" id="onb-temas" aria-label="Onboarding · temas" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="cabecera__spacer"></span>
+      <button type="button" class="cabecera__saltar" data-ir="onb-que-te-ha-traido">Saltar</button>
+    </header>
+    <div class="avance"><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg"></span></div>
+    <div class="screen__scroll">
+      <h1 class="t-titular-l onb__titular">¿De qué te apetece que te hablemos?</h1>
+      <p class="onb__entradilla">Marca los que quieras. Esto se cambia cuando cambies tú.</p>
+      <div class="campo campo--ancho">
+        <label class="sr-only" for="temas-campo">Buscar un tema</label>
+        <div class="campo__conjunto campo__conjunto--lupa">
+          <svg class="campo__lupa" viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.4"/><path d="m11 11 3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <input class="campo__input" id="temas-campo" type="text" placeholder="Buscar un tema" autocomplete="off">
+        </div>
+      </div>
+      <div class="chips" data-guarda="temas">
+        <button type="button" class="chip" aria-pressed="false">Cómo funciona el cuerpo</button>
+        <button type="button" class="chip" aria-pressed="false">Comunicación en pareja</button>
+        <button type="button" class="chip" aria-pressed="false">Deseo y fantasías</button>
+        <button type="button" class="chip" aria-pressed="false">Límites</button>
+        <button type="button" class="chip" aria-pressed="false">Consentimiento</button>
+        <button type="button" class="chip" aria-pressed="false">Masturbación</button>
+        <button type="button" class="chip" aria-pressed="false">Celos</button>
+        <button type="button" class="chip" aria-pressed="false">Autoconocimiento</button>
+        <button type="button" class="chip" aria-pressed="false">Orientación sexual</button>
+        <button type="button" class="chip" aria-pressed="false">Modelos de relación</button>
+        <button type="button" class="chip" aria-pressed="false">Dolor</button>
+        <button type="button" class="chip" aria-pressed="false">Placer</button>
+        <button type="button" class="chip" aria-pressed="false">Salud sexual</button>
+        <button type="button" class="chip" aria-pressed="false">Identidad de género</button>
+        <button type="button" class="chip" aria-pressed="false">Imagen corporal</button>
+        <button type="button" class="chip" aria-pressed="false">Primeras veces</button>
+      </div>
+    </div>
+    <footer class="screen__pie">
+      <button type="button" class="btn btn--primario" data-ir="onb-que-te-ha-traido">Continuar</button>
+    </footer>
+  </section>
+
+  <section class="screen" id="onb-que-te-ha-traido" aria-label="Onboarding · qué te ha traído aquí" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="cabecera__spacer"></span>
+      <button type="button" class="cabecera__saltar" data-ir="onb-notificaciones">Saltar</button>
+    </header>
+    <div class="avance"><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg avance__seg--hecho"></span><span class="avance__seg avance__seg--hecho"></span></div>
+    <div class="screen__scroll">
+      <h1 class="t-titular-l onb__titular">¿Y qué te ha traído hasta aquí?</h1>
+      <p class="onb__entradilla">Marca las que quieras, o ninguna.</p>
+      <div class="checks" data-guarda="queTeHaTraido">
+        <label class="check"><input type="checkbox" value="Quiero entender mejor mi cuerpo"><span>Quiero entender mejor mi cuerpo</span></label>
+        <label class="check"><input type="checkbox" value="No llego al orgasmo, o me cuesta"><span>No llego al orgasmo, o me cuesta</span></label>
+        <label class="check"><input type="checkbox" value="Problemas de erección"><span>Problemas de erección</span></label>
+        <label class="check"><input type="checkbox" value="Falta de deseo"><span>Falta de deseo</span></label>
+        <label class="check"><input type="checkbox" value="Dolor durante el sexo"><span>Dolor durante el sexo</span></label>
+        <label class="check"><input type="checkbox" value="Mejorar la comunicación con mi pareja"><span>Mejorar la comunicación con mi pareja</span></label>
+        <label class="check"><input type="checkbox" value="Curiosidad, sin más"><span>Curiosidad, sin más</span></label>
+        <label class="check"><input type="checkbox" value="Prefiero no decirlo"><span>Prefiero no decirlo</span></label>
+      </div>
+      <div class="campo campo--ancho">
+        <label class="sr-only" for="traido-libre">Descríbelo con tus palabras</label>
+        <input class="campo__input" id="traido-libre" type="text" placeholder="Escríbelo con tus palabras">
+      </div>
+    </div>
+    <footer class="screen__pie">
+      <button type="button" class="btn btn--primario" data-ir="onb-notificaciones">Continuar</button>
+    </footer>
+  </section>
+
+  <!-- ===================== ONBOARDING · CIERRE ===================== -->
+
+  <section class="screen" id="onb-notificaciones" aria-label="Onboarding · notificaciones" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="cabecera__spacer"></span>
+    </header>
+    <div class="screen__scroll">
+      <div class="onb__aire"></div>
+      <h1 class="t-titular-l onb__titular">¿Te avisamos de vez en cuando?</h1>
+      <p class="onb__entradilla">Una pregunta suelta, cada tantos días. En la pantalla bloqueada no se lee de qué va.</p>
+      <div class="tarjeta aviso">
+        <img class="aviso__icono" src="assets/icons/pillowtalk-app.png" alt="">
+        <span class="aviso__textos">
+          <span class="aviso__app">Pillowtalk</span>
+          <span class="aviso__texto">Tienes una pregunta nueva</span>
+        </span>
+      </div>
+      <p class="onb__entradilla">Se puede cambiar en cualquier momento desde Perfil.</p>
+    </div>
+    <footer class="screen__pie">
+      <button type="button" class="btn btn--primario" data-notificaciones="si">Sí, avisadme</button>
+      <button type="button" class="btn btn--texto" data-notificaciones="no">Ahora no</button>
+    </footer>
+  </section>
+
+  <!-- El resumen solo cierra un onboarding completo. -->
+  <section class="screen" id="onb-resumen" aria-label="Onboarding · resumen" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="cabecera__spacer"></span>
+    </header>
+    <div class="screen__scroll">
+      <h1 class="t-titular-l onb__titular">Esto es lo que nos has contado</h1>
+      <p class="onb__entradilla">Se cambia entero desde tu perfil, cuando quieras.</p>
+      <div class="datos" id="resumen-datos"></div>
+    </div>
+    <footer class="screen__pie">
+      <button type="button" class="btn btn--primario" id="resumen-entrar">Entrar</button>
+    </footer>
+  </section>
+
+  <!-- ===================== APP ===================== -->
+
+  <!-- Explorar: el mazo y nada más. Las cartas solo se deslizan. -->
+  <section class="screen screen--tabbed" id="explorar" aria-label="Explorar" hidden>
+    <div class="explorar">
+      <div class="mazo-swipe" id="mazo-swipe" aria-live="polite"></div>
+      <div class="explorar__controles">
+        <button type="button" class="explorar__flecha" data-swipe="-1" aria-label="Carta anterior">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <span class="explorar__pista">Desliza</span>
+        <button type="button" class="explorar__flecha" data-swipe="1" aria-label="Carta siguiente">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen screen--tabbed" id="home-detalle-mito" aria-label="Detalle del mito" hidden>
+    <div class="screen__scroll">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+
+      <p class="card-mito card-mito--grande card-mito--5">"El himen se rompe la primera vez"</p>
+
+      <div class="mito__textos">
+        <h1 class="seccion__titulo">Respuesta</h1>
+        <p class="mito__cuerpo">El himen es un pliegue de tejido elástico en la entrada de la vagina, y su forma cambia muchísimo de una persona a otra. No sella nada, así que no hay nada que romper como si fuera un precinto. Puede estirarse, puede molestar, puede sangrar o no, y nada de eso dice absolutamente nada sobre lo que esa persona ha hecho o dejado de hacer.</p>
+      </div>
+
+      <!-- Todo dato lleva fuente (regla 9). -->
+      <div class="dato">
+        <p class="dato__titular">En Suecia le cambiaron el nombre</p>
+        <p class="dato__cuerpo">Desde 2009 la asociación sueca de educación sexual lo llama corona vaginal en lugar de himen, precisamente para romper con la idea de membrana que se rompe.</p>
+        <p class="dato__fuente">RFSU, Asociación Sueca de Educación Sexual</p>
+      </div>
+
+      <button type="button" class="autoria">
+        <img class="autoria__retrato" src="assets/icons/imagen perfil fuente.png" alt="">
+        <span class="autoria__datos">
+          <span class="autoria__nombre">RFSU</span>
+          <span class="autoria__rol">Asociación Sueca de Educación Sexual</span>
+        </span>
+        <span class="autoria__flecha" aria-hidden="true">›</span>
+      </button>
+
+      <h2 class="seccion__titulo">Contenido relacionado</h2>
+      <div class="fila">
+        <button type="button" data-contenido="video-clitoris" class="card-video card-video--pequena" data-ir="contenido-video">
+          <span class="card-video__miniatura sin-imagen">falta imagen</span>
+          <span class="card-video__titulo">El clítoris entero, en 3 minutos</span>
+          <span class="card-video__meta">Nombre de la autora · vídeo · 3:10</span>
+        </button>
+        <button type="button" data-contenido="video-lubricarse" class="card-video card-video--pequena" data-ir="contenido-video">
+          <span class="card-video__miniatura sin-imagen">falta imagen</span>
+          <span class="card-video__titulo">Lubricarse no es un examen</span>
+          <span class="card-video__meta">Nombre de la autora · vídeo · 4:05</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen screen--tabbed" id="biblioteca" aria-label="Biblioteca" hidden>
+    <div class="screen__scroll">
+      <button type="button" class="buscador" data-ir="biblioteca-busqueda-activa">Buscar en la biblioteca</button>
+
+      <div class="chips chips--formato">
+        <button type="button" class="chip" data-formato="todos" aria-pressed="true">Todos</button>
+        <button type="button" class="chip" data-formato="articulo" aria-pressed="false">Artículos</button>
+        <button type="button" class="chip" data-formato="podcast" aria-pressed="false">Podcast</button>
+        <button type="button" class="chip" data-formato="video" aria-pressed="false">Vídeos</button>
+      </div>
+
+      <div class="listas">
+        <button type="button" class="lista" data-ir="biblioteca-favoritos">
+          <span class="lista__icono lista__icono--favoritos" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 21s-7.5-4.7-9.3-8.4C1.2 9.4 3 6 6.3 6c2 0 3.3 1.1 4 2 .7-.9 2-2 4-2 3.3 0 5.1 3.4 3.6 6.6C19.5 16.3 12 21 12 21Z"/></svg>
+          </span>
+          <span class="lista__nombre">Favoritos</span>
+        </button>
+        <button type="button" class="lista" data-ir="biblioteca-ver-mas-tarde">
+          <span class="lista__icono lista__icono--tarde" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1Z"/></svg>
+          </span>
+          <span class="lista__nombre">Ver más tarde</span>
+        </button>
+      </div>
+
+      <!-- Las secciones se pintan desde el catálogo según el chip encendido.
+           Ver js/biblioteca.js -->
+      <div class="secciones" id="biblioteca-secciones"></div>
+    </div>
+
+    <!-- Mini player: barra de continuar. Aparece cuando hay algo abierto
+         y no terminado. La ✕ lo cierra. -->
+    <div class="mini-player" id="mini-player" hidden>
+      <button type="button" class="mini-player__abrir" data-ir="contenido-podcast">
+        <span class="mini-player__portada sin-imagen" aria-hidden="true"></span>
+        <span class="mini-player__textos">
+          <span class="mini-player__titulo"></span>
+          <span class="mini-player__meta"></span>
+        </span>
+      </button>
+      <span class="btn-play" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7L8 5Z"/></svg>
+      </span>
+      <button type="button" class="mini-player__cerrar" aria-label="Cerrar el reproductor"><img src="assets/icons/x.png" alt=""></button>
+      <span class="mini-player__progreso" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <section class="screen screen--tabbed" id="biblioteca-busqueda-activa" aria-label="Biblioteca · búsqueda activa" hidden>
+    <div class="screen__scroll">
+      <div class="fila-busqueda">
+        <div class="buscador buscador--activo">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.4"/><path d="m11 11 3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <label class="sr-only" for="busqueda-campo">Buscar en la biblioteca</label>
+          <input class="buscador__campo" id="busqueda-campo" type="search" placeholder="Buscar en la biblioteca" autocomplete="off">
+        </div>
+        <button type="button" class="btn--texto btn-cancelar" data-ir="biblioteca">Cancelar</button>
+      </div>
+
+      <h2 class="seccion__titulo">Sugerencias</h2>
+      <div class="sugerencias" id="sugerencias">
+        <button type="button" class="sugerencia" data-ir="busqueda-con-resultados">deseo</button>
+        <button type="button" class="sugerencia" data-ir="busqueda-sin-resultados">vasectomía</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen screen--tabbed" id="busqueda-con-resultados" aria-label="Búsqueda · con resultados" hidden>
+    <div class="screen__scroll">
+      <div class="fila-busqueda">
+        <div class="buscador buscador--activo">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.4"/><path d="m11 11 3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <span class="buscador__texto">deseo</span>
+        </div>
+        <button type="button" class="btn--texto btn-cancelar" data-ir="biblioteca">Cancelar</button>
+      </div>
+
+      <div class="chips chips--busqueda" id="chips-busqueda">
+        <button type="button" class="chip" data-formato="podcast" aria-pressed="false">Podcast</button>
+        <button type="button" class="chip" data-formato="articulo" aria-pressed="false">Artículo</button>
+        <button type="button" class="chip" data-formato="video" aria-pressed="false">Vídeo</button>
+      </div>
+
+      <!-- Los resultados y su cuenta se pintan filtrados por los chips.
+           Ver js/biblioteca.js -->
+      <p class="resultados__cuenta" id="resultados-cuenta"></p>
+      <div class="lista-guardados" id="resultados-lista"></div>
+    </div>
+  </section>
+
+  <section class="screen screen--tabbed" id="busqueda-sin-resultados" aria-label="Búsqueda · sin resultados" hidden>
+    <div class="screen__scroll">
+      <div class="fila-busqueda">
+        <div class="buscador buscador--activo">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.4"/><path d="m11 11 3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <span class="buscador__texto" id="busqueda-sin-texto">vasectomía</span>
+        </div>
+        <button type="button" class="btn--texto btn-cancelar" data-ir="biblioteca">Cancelar</button>
+      </div>
+
+      <p class="vacio">No hemos encontrado nada similar</p>
+
+      <h2 class="seccion__titulo">Contenido sugerido</h2>
+
+      <button type="button" class="pieza" data-contenido="podcast-sin-bata" data-ir="contenido-podcast">
+        <span class="pieza__miniatura sin-imagen" aria-hidden="true"></span>
+        <span class="pieza__textos">
+          <span class="pieza__titulo">Sin bata</span>
+          <span class="pieza__meta">podcast · 15 min</span>
+        </span>
+        <span class="btn-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7L8 5Z"/></svg></span>
+      </button>
+
+      <button type="button" class="pieza" data-contenido="articulo-consentimiento" data-ir="contenido-articulo">
+        <span class="pieza__miniatura sin-imagen" aria-hidden="true"></span>
+        <span class="pieza__textos">
+          <span class="pieza__titulo">Consentimiento cuando ya lleváis años</span>
+          <span class="pieza__meta">artículo · 7 min</span>
+        </span>
+      </button>
+    </div>
+  </section>
+
+  <section class="screen screen--tabbed" id="biblioteca-favoritos" aria-label="Biblioteca · Favoritos" hidden>
+    <div class="screen__scroll">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <h1 class="t-titular-l lista__titular">Favoritos</h1>
+      <p class="resultados__cuenta" id="biblioteca-favoritos-cuenta"></p>
+      <div class="lista-guardados" id="biblioteca-favoritos-lista"></div>
+    </div>
+  </section>
+
+  <section class="screen screen--tabbed" id="biblioteca-ver-mas-tarde" aria-label="Biblioteca · Ver más tarde" hidden>
+    <div class="screen__scroll">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <h1 class="t-titular-l lista__titular">Ver más tarde</h1>
+      <p class="resultados__cuenta" id="biblioteca-ver-mas-tarde-cuenta"></p>
+      <div class="lista-guardados" id="biblioteca-ver-mas-tarde-lista"></div>
+    </div>
+  </section>
+
+  <section class="screen screen--tabbed" id="contenido-articulo" aria-label="Contenido · artículo" data-contenido="articulo-orgasmo" hidden>
+    <div class="screen__scroll">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+
+      <div class="portada sin-imagen">falta imagen</div>
+
+      <div class="contenido__cabecera">
+        <h1 class="t-titular-l contenido__titular">El orgasmo no es la meta (y se nota cuando lo es)</h1>
+        <p class="contenido__meta">Autor</p>
+        <p class="contenido__meta">artículo · 6 min de lectura</p>
+      </div>
+
+      <!-- Dos interruptores independientes: una pieza puede estar en las dos listas. -->
+      <div class="acciones-guardar">
+        <button type="button" class="accion-guardar" data-guardar="favoritos" aria-pressed="false">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.7-9.3-8.4C1.2 9.4 3 6 6.3 6c2 0 3.3 1.1 4 2 .7-.9 2-2 4-2 3.3 0 5.1 3.4 3.6 6.6C19.5 16.3 12 21 12 21Z"/></svg>
+          <span>Favoritos</span>
+        </button>
+        <button type="button" class="accion-guardar" data-guardar="ver-mas-tarde" aria-pressed="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1Z"/></svg>
+          <span>Ver más tarde</span>
+        </button>
+      </div>
+
+      <div class="contenido__cuerpo">
+        <p>Qué pasa cuando todo el encuentro se organiza alrededor de un final obligatorio, y cómo se desmonta ese guion sin perder nada por el camino.</p>
+        <p>Sed euismod, nunc ut laoreet dictum, massa sapien tempor urna, vitae fermentum lorem justo nec risus. Praesent dictum, velit non tincidunt vehicula, urna dolor porta ligula.</p>
+        <p>Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
+      </div>
+
+      <button type="button" class="autoria">
+        <img class="autoria__retrato" src="assets/icons/imagen perfil autora.png" alt="">
+        <span class="autoria__datos">
+          <span class="autoria__nombre">Nombre de la autora</span>
+          <span class="autoria__rol">Sexóloga · colegiada nº 0000</span>
+        </span>
+        <span class="autoria__flecha" aria-hidden="true">›</span>
+      </button>
+
+      <!-- Bloque de fuente: marcador visible mientras no haya fuente real. -->
+      <div class="bloque-fuente">
+        <p class="bloque-fuente__titulo">Fuente</p>
+        <p class="bloque-fuente__valor">[Publicación · año · enlace]</p>
+      </div>
+
+      <hr class="separador-fino">
+
+      <h2 class="seccion__titulo">Seguir leyendo</h2>
+
+      <button type="button" class="pieza" data-contenido="articulo-orgasmo" data-ir="contenido-articulo">
+        <span class="pieza__miniatura sin-imagen" aria-hidden="true"></span>
+        <span class="pieza__textos">
+          <span class="pieza__titulo">El orgasmo no es la meta (y se nota cuando lo es)</span>
+          <span class="pieza__meta">artículo · 6 min</span>
+        </span>
+      </button>
+
+      <button type="button" class="pieza" data-contenido="articulo-its" data-ir="contenido-articulo">
+        <span class="pieza__miniatura sin-imagen" aria-hidden="true"></span>
+        <span class="pieza__textos">
+          <span class="pieza__titulo">Pruebas de ITS: cuáles, cuándo y cómo pedirlas</span>
+          <span class="pieza__meta">artículo · 8 min</span>
+        </span>
+      </button>
+
+      <!-- Cierra toda pieza de contenido. -->
+      <div class="feedback">
+        <p class="feedback__pregunta">¿Te ha resultado útil?</p>
+        <div class="feedback__botones">
+          <button type="button" class="feedback__boton" aria-pressed="false">Sí</button>
+          <button type="button" class="feedback__boton" aria-pressed="false">No</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen screen--tabbed" id="contenido-video" aria-label="Contenido · vídeo" data-contenido="video-clitoris" hidden>
+    <div class="screen__scroll screen__scroll--sin-margen">
+      <div class="video__cabecera">
+        <div class="video__miniatura sin-imagen">falta imagen</div>
+        <button type="button" class="btn-play btn-play--sobre-media video__play" data-ir="reproductor" aria-label="Reproducir">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7L8 5Z"/></svg>
+        </button>
+        <span class="video__duracion">4:05</span>
+        <button type="button" class="btn-atras video__atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+
+      <div class="video__cuerpo">
+        <div class="contenido__cabecera">
+          <h1 class="t-titular-m contenido__titular">El clítoris entero, en 3 minutos</h1>
+          <p class="contenido__meta">Autor</p>
+        </div>
+
+        <p class="contenido__descripcion">La mayor parte no se ve desde fuera. Qué hay debajo, cómo está conectado y por qué cambia bastante las cosas saberlo.</p>
+        <p class="contenido__meta">Nombre de la autora · vídeo · 4:05</p>
+
+        <div class="acciones-guardar">
+          <button type="button" class="accion-guardar" data-guardar="favoritos" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.7-9.3-8.4C1.2 9.4 3 6 6.3 6c2 0 3.3 1.1 4 2 .7-.9 2-2 4-2 3.3 0 5.1 3.4 3.6 6.6C19.5 16.3 12 21 12 21Z"/></svg>
+            <span>Favoritos</span>
+          </button>
+          <button type="button" class="accion-guardar" data-guardar="ver-mas-tarde" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1Z"/></svg>
+            <span>Ver más tarde</span>
+          </button>
+        </div>
+
+        <button type="button" class="autoria">
+          <img class="autoria__retrato" src="assets/icons/imagen perfil autora.png" alt="">
+          <span class="autoria__datos">
+            <span class="autoria__nombre">Nombre de la autora</span>
+            <span class="autoria__rol">Sexóloga · colegiada nº 0000</span>
+          </span>
+          <span class="autoria__flecha" aria-hidden="true">›</span>
+        </button>
+
+        <div class="bloque-fuente">
+          <p class="bloque-fuente__titulo">Fuente</p>
+          <p class="bloque-fuente__valor">[Publicación · año · enlace]</p>
+        </div>
+
+        <hr class="separador-fino">
+        <h2 class="seccion__titulo">Vídeos relacionados</h2>
+        <div class="fila">
+          <button type="button" data-contenido="video-clitoris" class="card-video card-video--pequena" data-ir="contenido-video">
+            <span class="card-video__miniatura sin-imagen">falta imagen</span>
+            <span class="card-video__titulo">El clítoris entero, en 3 minutos</span>
+            <span class="card-video__meta">Nombre de la autora · vídeo · 3:10</span>
+          </button>
+          <button type="button" data-contenido="video-lubricarse" class="card-video card-video--pequena" data-ir="contenido-video">
+            <span class="card-video__miniatura sin-imagen">falta imagen</span>
+            <span class="card-video__titulo">Lubricarse no es un examen</span>
+            <span class="card-video__meta">Nombre de la autora · vídeo · 4:05</span>
+          </button>
+        </div>
+
+        <div class="feedback">
+          <p class="feedback__pregunta">¿Te ha resultado útil?</p>
+          <div class="feedback__botones">
+            <button type="button" class="feedback__boton" aria-pressed="false">Sí</button>
+            <button type="button" class="feedback__boton" aria-pressed="false">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen screen--tabbed" id="contenido-podcast" aria-label="Contenido · podcast" data-contenido="podcast-yo-tampoco" hidden>
+    <div class="screen__scroll">
+      <div class="podcast__fila-atras">
+        <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+
+      <div class="podcast__portada sin-imagen">falta imagen</div>
+
+      <div class="podcast__cabecera">
+        <h1 class="t-titular-l contenido__titular">Yo tampoco sabía</h1>
+        <p class="contenido__meta">Autor</p>
+      </div>
+      <p class="contenido__meta">Nombre de la autora · podcast · 38 min</p>
+
+      <div class="acciones-guardar">
+        <button type="button" class="accion-guardar" data-guardar="favoritos" aria-pressed="false">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.7-9.3-8.4C1.2 9.4 3 6 6.3 6c2 0 3.3 1.1 4 2 .7-.9 2-2 4-2 3.3 0 5.1 3.4 3.6 6.6C19.5 16.3 12 21 12 21Z"/></svg>
+          <span>Favoritos</span>
+        </button>
+        <button type="button" class="accion-guardar" data-guardar="ver-mas-tarde" aria-pressed="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1Z"/></svg>
+          <span>Ver más tarde</span>
+        </button>
+      </div>
+
+      <!-- Reproducción simulada: la barra avanza y el tiempo corre, pero
+           todavía no hay archivo detrás. -->
+      <div class="progreso"><span class="progreso__hecho" style="width: 27%"></span></div>
+      <div class="tiempos"><span>12:04</span><span>-25:56</span></div>
+
+      <div class="controles">
+        <button type="button" class="controles__salto">−15</button>
+        <button type="button" class="btn-play btn-play--grande" aria-label="Reproducir">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7L8 5Z"/></svg>
+        </button>
+        <button type="button" class="controles__salto">+15</button>
+      </div>
+
+      <p class="contenido__descripcion contenido__descripcion--centrada">Una conversación sobre lo que nadie nos explicó a tiempo, y sobre cómo se aprende de verdad cuando ya eres adulta.</p>
+
+      <button type="button" class="autoria">
+        <img class="autoria__retrato" src="assets/icons/imagen perfil autora.png" alt="">
+        <span class="autoria__datos">
+          <span class="autoria__nombre">Nombre de la autora</span>
+          <span class="autoria__rol">Sexóloga · colegiada nº 0000</span>
+        </span>
+        <span class="autoria__flecha" aria-hidden="true">›</span>
+      </button>
+
+      <div class="bloque-fuente">
+        <p class="bloque-fuente__titulo">Fuente</p>
+        <p class="bloque-fuente__valor">[Publicación · año · enlace]</p>
+      </div>
+
+      <hr class="separador-fino">
+
+      <div class="feedback">
+        <p class="feedback__pregunta">¿Te ha resultado útil?</p>
+        <div class="feedback__botones">
+          <button type="button" class="feedback__boton" aria-pressed="false">Sí</button>
+          <button type="button" class="feedback__boton" aria-pressed="false">No</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- El teléfono girado: 844 × 390. -->
+  <section class="screen" id="reproductor" aria-label="Reproductor a pantalla completa" hidden>
+    <div class="reproductor">
+      <div class="reproductor__barra-superior">
+        <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <span class="reproductor__textos">
+          <span class="reproductor__titulo">El clítoris entero, en 3 minutos</span>
+          <span class="reproductor__autor">Autor</span>
+        </span>
+      </div>
+
+      <div class="reproductor__controles">
+        <button type="button" class="reproductor__control">−15</button>
+        <button type="button" class="reproductor__control reproductor__control--grande" aria-label="Pausar">
+          <span class="reproductor__pausa" aria-hidden="true"><i></i><i></i></span>
+        </button>
+        <button type="button" class="reproductor__control">+15</button>
+      </div>
+
+      <div class="reproductor__barra-inferior">
+        <div class="reproductor__progreso"><span style="width: 20%"></span></div>
+        <div class="reproductor__tiempos">
+          <span>00:48</span>
+          <span class="reproductor__hueco"></span>
+          <span>03:10</span>
+          <button type="button" class="reproductor__salir" data-atras aria-label="Salir de pantalla completa"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen screen--tabbed" id="perfil" aria-label="Perfil" hidden>
+    <div class="screen__scroll">
+      <h1 class="t-titular-l perfil__titular" id="perfil-titular">Perfil</h1>
+
+      <div class="perfil__filas">
+        <button type="button" class="fila-perfil" data-ir="perfil-datos">
+          <span class="fila-perfil__textos">
+            <span class="fila-perfil__titulo">Datos</span>
+            <span class="fila-perfil__detalle">Los del onboarding · editar datos</span>
+          </span>
+          <span class="fila-perfil__flecha" aria-hidden="true">›</span>
+        </button>
+
+        <button type="button" class="fila-perfil" data-ir="perfil-notificaciones">
+          <span class="fila-perfil__textos">
+            <span class="fila-perfil__titulo">Notificaciones</span>
+            <span class="fila-perfil__detalle" id="perfil-avisos-detalle">Elegir de qué quieres que te avisemos</span>
+          </span>
+          <span class="fila-perfil__flecha" aria-hidden="true">›</span>
+        </button>
+
+        <button type="button" class="fila-perfil" data-ir="perfil-ajustes">
+          <span class="fila-perfil__textos">
+            <span class="fila-perfil__titulo">Ajustes</span>
+            <span class="fila-perfil__detalle" id="perfil-ajustes-detalle">Cuenta (modificar correo y contraseña, borrar cuenta) · Ayuda</span>
+          </span>
+          <span class="fila-perfil__flecha" aria-hidden="true">›</span>
+        </button>
+
+        <button type="button" class="fila-perfil">
+          <span class="fila-perfil__textos">
+            <span class="fila-perfil__titulo">Privacidad y datos</span>
+            <span class="fila-perfil__detalle">Términos de uso · Política de privacidad · Política de cookies · Aviso legal</span>
+          </span>
+          <span class="fila-perfil__flecha" aria-hidden="true">›</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Una sola pantalla con todos los datos del onboarding y sus dos
+       permisos. Lo que se omitió aparece como pendiente y se puede añadir. -->
+  <section class="screen" id="perfil-datos" aria-label="Perfil · Datos" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="cabecera__spacer"></span>
+    </header>
+
+    <div class="screen__scroll">
+      <h1 class="t-titular-l onb__titular">Tus datos</h1>
+      <p class="onb__entradilla">Lo que respondiste en su momento. Cámbialo, complétalo o quítalo.</p>
+
+      <div class="datos" id="perfil-datos-lista"></div>
+
+      <p class="onb__entradilla">Permisos</p>
+
+      <div class="permisos">
+        <div class="permiso">
+          <div class="permiso__textos">
+            <label class="permiso__titulo permiso__titulo--normal" for="perfil-permiso-respuestas">Guardar y usar tus respuestas</label>
+            <p class="permiso__detalle">Tus respuestas deciden qué te proponemos.</p>
+          </div>
+          <label class="interruptor"><input type="checkbox" id="perfil-permiso-respuestas"></label>
+        </div>
+        <div class="permiso">
+          <div class="permiso__textos">
+            <label class="permiso__titulo permiso__titulo--normal" for="perfil-permiso-uso">Guardar y usar tu actividad en la app</label>
+            <p class="permiso__detalle">Búsquedas, guardados y respuestas afinan lo que ves.</p>
+          </div>
+          <label class="interruptor"><input type="checkbox" id="perfil-permiso-uso"></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Esta pantalla no existe como frame en Figma. En el prototipo la fila
+       de Perfil era un resumen; aquí se entra y se elige qué avisos se
+       quieren, uno por uno. -->
+  <section class="screen" id="perfil-notificaciones" aria-label="Perfil · Notificaciones" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="cabecera__spacer"></span>
+    </header>
+
+    <div class="screen__scroll">
+      <h1 class="t-titular-l onb__titular">Notificaciones</h1>
+      <p class="onb__entradilla">Elige por dónde quieres que te avisemos. En la pantalla bloqueada no se lee de qué va.</p>
+
+      <div class="permisos" id="avisos">
+        <div class="permiso">
+          <div class="permiso__textos">
+            <label class="permiso__titulo permiso__titulo--normal" for="aviso-push">Notificaciones push</label>
+            <p class="permiso__detalle">Una pregunta suelta, cada tantos días.</p>
+          </div>
+          <label class="interruptor"><input type="checkbox" id="aviso-push" data-aviso="push"></label>
+        </div>
+        <div class="permiso">
+          <div class="permiso__textos">
+            <label class="permiso__titulo permiso__titulo--normal" for="aviso-mensajes">Mensajes</label>
+            <p class="permiso__detalle">Avisos dentro de la app, sin salir a la pantalla bloqueada.</p>
+          </div>
+          <label class="interruptor"><input type="checkbox" id="aviso-mensajes" data-aviso="mensajes"></label>
+        </div>
+        <div class="permiso">
+          <div class="permiso__textos">
+            <label class="permiso__titulo permiso__titulo--normal" for="aviso-email">Email</label>
+            <p class="permiso__detalle">Un correo de vez en cuando con lo nuevo.</p>
+          </div>
+          <label class="interruptor"><input type="checkbox" id="aviso-email" data-aviso="email"></label>
+        </div>
+      </div>
+
+      <p class="onb__entradilla">Se puede cambiar en cualquier momento.</p>
+    </div>
+  </section>
+
+  <!-- Esta pantalla no existe como frame en Figma: se monta con los
+       componentes del design system y el contenido de la fila Ajustes
+       de Perfil. La fila de cuenta cambia según haya cuenta o no, y la
+       de contraseña no aplica a quien entró con Google o Apple. -->
+  <section class="screen" id="perfil-ajustes" aria-label="Perfil · Ajustes" hidden>
+    <header class="cabecera">
+      <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="cabecera__spacer"></span>
+    </header>
+
+    <div class="screen__scroll">
+      <h1 class="t-titular-l onb__titular">Ajustes</h1>
+
+      <p class="onb__entradilla">Cuenta</p>
+      <div class="perfil__filas" id="ajustes-cuenta">
+        <button type="button" class="fila-perfil" id="ajustes-correo">
+          <span class="fila-perfil__textos">
+            <span class="fila-perfil__titulo">Correo</span>
+            <span class="fila-perfil__detalle">Modificar el correo de la cuenta</span>
+          </span>
+          <span class="fila-perfil__flecha" aria-hidden="true">›</span>
+        </button>
+
+        <button type="button" class="fila-perfil" id="ajustes-contrasena">
+          <span class="fila-perfil__textos">
+            <span class="fila-perfil__titulo">Contraseña</span>
+            <span class="fila-perfil__detalle">Modificar la contraseña</span>
+          </span>
+          <span class="fila-perfil__flecha" aria-hidden="true">›</span>
+        </button>
+
+        <button type="button" class="fila-perfil" id="ajustes-sesion">
+          <span class="fila-perfil__textos">
+            <span class="fila-perfil__titulo" id="ajustes-sesion-titulo">Borrar cuenta</span>
+            <span class="fila-perfil__detalle" id="ajustes-sesion-detalle">Se borra todo lo que has guardado y lo que has respondido</span>
+          </span>
+          <span class="fila-perfil__flecha" aria-hidden="true">›</span>
+        </button>
+      </div>
+
+      <p class="onb__entradilla">Ayuda</p>
+      <div class="perfil__filas">
+        <button type="button" class="fila-perfil">
+          <span class="fila-perfil__textos">
+            <span class="fila-perfil__titulo">Ayuda</span>
+            <span class="fila-perfil__detalle">Preguntas frecuentes y cómo ponerte en contacto</span>
+          </span>
+          <span class="fila-perfil__flecha" aria-hidden="true">›</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NAVBAR ===================== -->
+
+  <nav class="navbar" id="navbar" aria-label="Navegación principal">
+    <button type="button" class="navbar__tab" data-tab="home" data-ir="home">
+      <span class="navbar__pastilla">
+        <img src="assets/icons/home.png" alt="">
+      </span>
+      Home
+    </button>
+
+    <button type="button" class="navbar__tab" data-tab="explorar" data-ir="explorar">
+      <span class="navbar__pastilla">
+        <img src="assets/icons/explorar.png" alt="">
+      </span>
+      Explorar
+    </button>
+
+    <button type="button" class="navbar__tab" data-tab="biblioteca" data-ir="biblioteca">
+      <span class="navbar__pastilla">
+        <img src="assets/icons/biblioteca.png" alt="">
+      </span>
+      Biblioteca
+    </button>
+
+    <button type="button" class="navbar__tab" data-tab="perfil" data-ir="perfil">
+      <span class="navbar__pastilla">
+        <img src="assets/icons/perfil.png" alt="">
+      </span>
+      Perfil
+    </button>
+  </nav>
+
+  <!-- ===================== HOJAS INFERIORES ===================== -->
+
+  <div class="overlay" id="overlay" data-open="false" data-cierra></div>
+
+  <div class="sheet" id="modal-cuenta" role="dialog" aria-modal="true" aria-labelledby="modal-cuenta-titulo" data-open="false">
+    <span class="sheet__asa" aria-hidden="true"></span>
+    <h2 class="t-titular-l sheet__titular" id="modal-cuenta-titulo">Esto se puede usar así, tal cual</h2>
+    <p class="sheet__texto">Sin cuenta funciona todo. La cuenta solo sirve para que lo que guardes y lo que respondas no se queden en este móvil.</p>
+    <div class="sheet__acciones">
+      <button type="button" class="btn btn--primario" data-cierra data-ir="crear-cuenta">Crear cuenta</button>
+      <button type="button" class="btn btn--texto" data-cierra>Ahora no</button>
+    </div>
+  </div>
+
+  <div class="sheet" id="modal-guardar" role="dialog" aria-modal="true" aria-labelledby="modal-guardar-titulo" data-open="false">
+    <span class="sheet__asa" aria-hidden="true"></span>
+    <h2 class="t-titular-l sheet__titular" id="modal-guardar-titulo">Guardado</h2>
+    <p class="sheet__texto">Aquí se queda. Si cambias de móvil, no: eso lo arregla una cuenta.</p>
+    <div class="sheet__acciones">
+      <button type="button" class="btn btn--primario" data-cierra data-ir="crear-cuenta">Crear cuenta</button>
+      <button type="button" class="btn btn--texto" data-cierra>Ahora no</button>
+    </div>
+  </div>
+
+</main>
+
+<script src="js/state.js"></script>
+<script src="js/router.js"></script>
+<script src="js/pantallas.js"></script>
+<script src="js/cuenta.js"></script>
+<script src="js/onboarding.js"></script>
+<script src="js/mazo.js"></script>
+<script src="js/contenido.js"></script>
+<script src="js/biblioteca.js"></script>
+<script src="js/perfil.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
