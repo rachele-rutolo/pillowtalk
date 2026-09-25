@@ -1,0 +1,1305 @@
+/* ==========================================================================
+   Pillowtalk · componentes
+   ========================================================================== */
+
+/* ---------- Button ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-full);
+  background: var(--bg-default);
+  color: var(--content-default);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover { background: var(--bg-default-hover); }
+.btn:active { background: var(--bg-default-pressed); }
+
+.btn--primario {
+  background: var(--bg-brand);
+  border-color: var(--bg-brand);
+  color: var(--content-onbrand);
+}
+.btn--primario:hover { background: var(--bg-brand-hover); border-color: var(--bg-brand-hover); }
+.btn--primario:active { background: var(--bg-brand-pressed); border-color: var(--bg-brand-pressed); }
+
+.btn--texto {
+  border-color: transparent;
+  background: none;
+  font-weight: 400;
+}
+
+.btn[disabled] {
+  background: var(--bg-disabled);
+  border-color: var(--bg-disabled);
+  color: var(--content-tertiary);
+  cursor: not-allowed;
+}
+
+/* Ripple al pulsar. Escrito a mano: la ficha del design system está en
+   React y no se puede pegar en un prototipo sin framework. */
+.btn .ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background: currentColor;
+  opacity: 0.28;
+  pointer-events: none;
+  animation: ripple 0.55s ease-out forwards;
+}
+
+@keyframes ripple {
+  to { transform: scale(2.6); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn .ripple { display: none; }
+}
+
+/* ---------- Botón atrás ---------- */
+
+.btn-atras {
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: none;
+  color: var(--content-default);
+  flex: none;
+}
+
+/* ---------- Cabecera de onboarding ---------- */
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 60px var(--space-4) var(--space-2);
+  flex: none;
+}
+
+.cabecera__spacer { flex: 1 1 0; min-width: 0; height: 44px; }
+
+/* ---------- Text Input ---------- */
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.campo[hidden] { display: none; }
+
+.campo__label {
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--content-tertiary);
+}
+
+.campo__input {
+  height: 44px;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-default);
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.campo__input::placeholder { color: var(--content-tertiary); }
+.campo__input:focus { border-color: var(--border-brand); }
+
+/* ---------- Checkbox ---------- */
+
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  cursor: pointer;
+}
+
+.check input {
+  appearance: none;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--bg-default);
+  display: grid;
+  place-content: center;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.check input::after {
+  content: "";
+  width: 11px;
+  height: 6px;
+  border-left: 2px solid var(--content-onbrand);
+  border-bottom: 2px solid var(--content-onbrand);
+  transform: rotate(-45deg) scale(0);
+  transform-origin: center;
+  transition: transform 0.18s cubic-bezier(0.2, 0.85, 0.25, 1);
+  margin-top: -2px;
+}
+
+.check input:checked {
+  background: var(--bg-brand);
+  border-color: var(--bg-brand);
+}
+
+.check input:checked::after { transform: rotate(-45deg) scale(1); }
+
+.check span { font-size: 14px; line-height: 1.3; padding-top: 1px; }
+
+/* ---------- Navbar ---------- */
+
+.navbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--navbar-h);
+  display: none;
+  align-items: stretch;
+  background: var(--base-white);
+  border-top: 1px solid var(--gray-300);
+  z-index: 30;
+}
+
+.navbar[data-visible="true"] { display: flex; }
+
+.navbar__tab {
+  flex: 1;
+  min-height: var(--tap);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 11px;
+  gap: 5px;
+  border: 0;
+  background: none;
+  color: var(--gray-500);
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.navbar__pastilla {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  transition: background-color 0.2s ease;
+}
+
+/* Tab activa: icono y texto en negro, texto en negrita. Sin pastilla. */
+.navbar__tab[aria-current="page"] { color: var(--base-black); font-weight: 700; }
+
+.navbar__tab svg { width: 21px; height: 21px; }
+
+/* ---------- Entrada al mazo ---------- */
+
+.entrada-mazo {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 20px 18px;
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: var(--brand-purple-500);
+  color: var(--gray-100);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  z-index: 2;
+}
+
+.entrada-mazo__titular {
+  display: block;
+  font-family: "Tiny Tiny", sans-serif;
+  font-size: 32px;
+  line-height: 1;
+  margin: 0 0 14px;
+}
+
+.entrada-mazo__accion { display: block; font-size: 14px; line-height: 1.3; margin: 0; }
+
+/* Las dos cartas que asoman por detrás son decoración, pero ocupan
+   sitio: el mazo reserva ese hueco abajo en vez de dejar que se coman
+   la separación con la sección siguiente. */
+.mazo {
+  position: relative;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.mazo::before,
+.mazo::after {
+  content: "";
+  position: absolute;
+  inset: 8px -6px 10px 6px;
+  border-radius: var(--radius-lg);
+  z-index: 0;
+}
+
+.mazo::before { background: var(--brand-yellow-500); transform: rotate(1.1deg) translateY(10px); }
+.mazo::after { background: var(--brand-red-300); transform: rotate(-1.4deg) translateY(4px); }
+
+/* ---------- Card de mito ---------- */
+
+.card-mito {
+  position: relative;
+  display: block;
+  padding: 16px 14px;
+  border: 2px solid var(--base-black);
+  border-radius: var(--radius-md);
+  background: var(--base-white);
+  font-family: "Tiny Tiny", sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--base-black);
+  text-align: center;
+  box-shadow: 3px 4px 0 var(--base-black);
+}
+
+/* PENDIENTE: en Figma el contorno es un trazo dibujado a mano (SVG).
+   Aquí es un borde recto hasta que se exporten los trazos. */
+
+/* ---------- Card pregunta del día ---------- */
+
+.card-pregunta {
+  position: relative;
+  padding: 24px 22px 28px;
+  border: 2px solid var(--base-black);
+  border-radius: var(--radius-md);
+  background: var(--base-white);
+  box-shadow: 4px 5px 0 var(--base-black);
+}
+
+.card-pregunta__titular {
+  font-family: "Tiny Tiny", sans-serif;
+  font-size: 32px;
+  line-height: 1;
+  margin: 0 0 20px;
+  max-width: 62%;
+}
+
+.card-pregunta__opciones {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.opcion {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 8px 16px;
+  border: 1px solid var(--base-black);
+  border-radius: var(--radius-full);
+  background: var(--opcion-color, var(--bg-default));
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--base-black);
+  text-align: left;
+}
+
+.opcion[aria-pressed="true"] { box-shadow: 2px 2px 0 var(--base-black); font-weight: 600; }
+
+/* ---------- Card vídeo ---------- */
+
+.card-video {
+  flex: none;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  border: 0;
+  background: none;
+  padding: 0;
+  text-align: left;
+}
+
+.card-video__miniatura {
+  position: relative;
+  height: 158px;
+  border-radius: var(--radius-lg);
+  background: var(--gray-300);
+  overflow: hidden;
+}
+
+.card-video__duracion {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  background: var(--gray-700);
+  color: var(--base-white);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.card-video__play {
+  position: absolute;
+  top: 51px;
+  left: 112px;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-content: center;
+  border-radius: 28px;
+  background: var(--base-white);
+  color: var(--gray-900);
+}
+
+.card-video__titulo {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--brand-lavender-1000);
+  margin: 0;
+}
+
+.card-video__meta {
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--content-tertiary);
+  margin: 0;
+}
+
+/* ---------- Fila con scroll horizontal ---------- */
+
+.fila {
+  display: flex;
+  width: 100%;
+  align-self: stretch;
+  gap: var(--space-3);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  /* El snap se alinea con el borde del contenedor, no con su padding:
+     sin esto la primera card se pega al borde y pierde el margen. */
+  scroll-padding-inline: var(--space-4);
+  margin: 0 calc(var(--space-4) * -1);
+  padding: 0 var(--space-4);
+}
+
+.fila > * { scroll-snap-align: start; }
+.fila::-webkit-scrollbar { display: none; }
+
+/* ---------- Título de sección ----------
+   Todos son Encabezado: DM Sans SemiBold 16. */
+
+.seccion { display: flex; flex-direction: column; gap: var(--space-3); }
+
+/* Grupo de secciones que se pintan desde el catálogo (biblioteca).
+   Mismo hueco que tenían sueltas dentro de la pantalla: nada cambia de sitio. */
+.secciones {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.seccion__titulo {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--base-black);
+  margin: 0;
+}
+
+/* ---------- Imagen que todavía no existe ---------- */
+
+.sin-imagen {
+  display: grid;
+  place-content: center;
+  background: var(--gray-300);
+  color: var(--content-tertiary);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ---------- Marcador de pantalla sin montar ---------- */
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.placeholder::before {
+  content: "sin montar";
+  align-self: flex-start;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: var(--brand-yellow-300);
+  color: var(--gray-900);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Hoja inferior ---------- */
+
+.sheet__asa {
+  display: block;
+  width: 40px;
+  height: 4px;
+  margin: 0 auto;
+  border: 1px solid var(--border-default);
+  border-radius: 2px;
+  background: #d6d6d2;
+}
+
+.sheet__titular { margin: 0; color: var(--brand-lavender-1000); }
+.sheet__texto { margin: 0; font-size: 14px; line-height: 1.3; color: var(--content-tertiary); }
+.sheet__texto--oscuro { color: var(--base-black); }
+
+.sheet__acciones { display: flex; flex-direction: column; gap: 6px; }
+
+.sheet { display: flex; flex-direction: column; gap: 14px; }
+
+/* ---------- Separador "o" ---------- */
+
+.separador {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--content-tertiary);
+}
+
+.separador::before,
+.separador::after {
+  content: "";
+  flex: 1 1 0;
+  height: 1px;
+  background: var(--border-default);
+}
+
+/* ---------- Icono de marca dentro de un botón ---------- */
+/* PENDIENTE: letras provisionales, faltan google.svg y apple.svg de Figma */
+
+.icono-marca {
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-content: center;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* ---------- Campo con icono a la derecha ---------- */
+
+.campo--ancho { width: 100%; flex: none; }
+.campo__label--fuerte { color: var(--content-default); }
+
+.campo__conjunto { position: relative; }
+
+.campo__conjunto .campo__input { padding-right: 44px; }
+
+/* Text Input con lente (buscador de temas del onboarding) */
+.campo__conjunto--lupa .campo__input { padding-right: var(--space-4); padding-left: 40px; }
+.campo__lupa { position: absolute; left: var(--space-4); top: 50%; transform: translateY(-50%); color: var(--content-tertiary); pointer-events: none; }
+
+.campo__ojo {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-content: center;
+  border: 0;
+  background: none;
+  color: var(--content-default);
+}
+
+/* ---------- Estado de error ---------- */
+
+.estado-error {
+  width: 100%;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid #17171a;
+  border-radius: var(--radius-lg);
+  background: var(--bg-default);
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--brand-lavender-1000);
+}
+
+/* ---------- Indicador de avance ---------- */
+
+.avance {
+  display: flex;
+  gap: 6px;
+  padding: 0 var(--space-4) 28px;
+  flex: none;
+}
+
+.avance__seg {
+  flex: 1 1 0;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border-default);
+}
+
+.avance__seg--hecho { background: var(--brand-lavender-1000); }
+
+/* ---------- Saltar de la cabecera ---------- */
+
+.cabecera__saltar {
+  flex: none;
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border: 0;
+  background: none;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--content-secondary);
+}
+
+/* ---------- Radio button ---------- */
+
+.radios { display: flex; flex-direction: column; gap: 0; width: 100%; }
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  cursor: pointer;
+}
+
+.radio input {
+  appearance: none;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 1px solid var(--border-default);
+  border-radius: 160px;
+  background: var(--bg-default);
+  display: grid;
+  place-content: center;
+  transition: border-color 0.18s ease;
+}
+
+.radio input::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bg-brand);
+  transform: scale(0);
+  transition: transform 0.18s cubic-bezier(0.2, 0.85, 0.25, 1);
+}
+
+.radio input:checked { border-color: var(--bg-brand); }
+.radio input:checked::after { transform: scale(1); }
+
+.radio span { font-size: 14px; line-height: 1.3; }
+
+/* ---------- Chip de filtro ----------
+   Se queda encendido: es un estado, no una acción. */
+
+.chips { display: flex; flex-wrap: wrap; gap: var(--space-2); width: 100%; }
+.chip[hidden] { display: none; }
+
+.chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  padding: 7px 14px;
+  border: 0;
+  border-radius: 16px;
+  background: var(--gray-100);
+  font-size: 12px;
+  line-height: 1.3;
+  color: var(--brand-lavender-1000);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Zona táctil de 44 px sin engordar la forma del chip. */
+.chip::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  height: var(--tap);
+  transform: translateY(-50%);
+}
+
+/* Seleccionado: se queda encendido, no es una acción. */
+.chip[aria-pressed="true"] {
+  background: var(--brand-lavender-1000);
+  color: var(--base-white);
+}
+
+/* ---------- Lista de checkboxes ---------- */
+
+.checks { display: flex; flex-direction: column; gap: 0; width: 100%; }
+
+/* ---------- Interruptor ---------- */
+
+.interruptor { flex: none; display: inline-flex; align-items: center; cursor: pointer; }
+
+.interruptor input {
+  appearance: none;
+  width: 36px;
+  height: 20px;
+  margin: 0;
+  border-radius: 100px;
+  background: var(--bg-default-tertiary);
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.interruptor input::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 24px;
+  background: var(--content-onbrand);
+  transition: transform 0.2s cubic-bezier(0.2, 0.85, 0.25, 1);
+}
+
+.interruptor input:checked { background: var(--bg-brand); }
+.interruptor input:checked::after { transform: translateX(16px); }
+
+/* ---------- Fila de permiso ---------- */
+
+.permisos { width: 100%; }
+
+.permiso {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.permiso__textos { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.permiso__titulo { font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--brand-lavender-1000); cursor: pointer; }
+.permiso__detalle { margin: 0; font-size: 14px; line-height: 1.3; color: var(--content-tertiary); }
+
+/* ---------- Tarjeta con borde ---------- */
+
+.tarjeta {
+  width: 100%;
+  padding: var(--space-4);
+  border: 1px solid var(--border-default);
+  border-radius: 14px;
+  background: var(--bg-default);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tarjeta__linea { width: 100%; height: 1px; margin: 0; border: 0; background: #d6d6d2; }
+
+/* ---------- Aviso de ejemplo ---------- */
+
+.aviso { flex-direction: row; align-items: center; gap: 12px; }
+.aviso__icono { width: 34px; height: 34px; border-radius: 9px; flex: none; }
+.aviso__textos { display: flex; flex-direction: column; gap: 2px; }
+.aviso__app { font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--brand-lavender-1000); }
+.aviso__texto { font-size: 14px; line-height: 1.3; color: var(--content-tertiary); }
+
+/* ---------- Fila de dato ---------- */
+
+.datos { width: 100%; }
+
+.fila-dato {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  padding: 13px 0;
+  border: 0;
+  border-bottom: 1px solid var(--border-default);
+  background: none;
+  text-align: left;
+}
+
+.fila-dato__textos { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.fila-dato__clave { font-size: 12px; line-height: 1.3; color: var(--content-secondary); }
+.fila-dato__valor { font-size: 14px; line-height: 1.3; color: var(--content-default); }
+.fila-dato__valor--pendiente { color: var(--content-tertiary); }
+.fila-dato__accion { flex: none; font-size: 14px; line-height: 1.3; color: var(--content-secondary); }
+
+/* ---------- Card de mito, tamaño grande ---------- */
+
+.card-mito--grande {
+  width: 100%;
+  margin: 0;
+  padding: 18px 16px;
+  font-size: 32px;
+  line-height: 1;
+  text-align: left;
+}
+
+/* ---------- Bloque de dato con fuente ----------
+   Regla 9: todo dato lleva fuente. Sin fuente, marcador visible. */
+
+.dato {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  background: var(--brand-lavender-100);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dato__titular { margin: 0; font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--brand-lavender-1000); }
+.dato__cuerpo { margin: 0; font-size: 12px; line-height: 1.3; color: var(--base-black); }
+.dato__fuente { margin: 0; font-size: 10px; font-weight: 700; line-height: 1.4; color: var(--content-tertiary); }
+
+/* ---------- Ficha de autoría ----------
+   Aparece en artículo, podcast y vídeo: sostiene el requisito de fiabilidad. */
+
+.autoria {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--brand-lavender-100);
+  text-align: left;
+}
+
+.autoria__retrato { width: 44px; height: 44px; border-radius: 50%; flex: none; }
+.autoria__datos { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.autoria__nombre { font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--brand-lavender-1000); }
+.autoria__rol { font-size: 10px; line-height: 1.4; color: var(--content-tertiary); }
+.autoria__flecha { flex: none; font-size: 14px; color: var(--content-tertiary); }
+
+/* ---------- Card vídeo pequeña (contenido relacionado) ---------- */
+
+.card-video--pequena { width: 174px; }
+.card-video--pequena .card-video__miniatura { height: 98px; }
+
+/* ---------- Buscador ---------- */
+
+.buscador {
+  width: 100%;
+  min-height: 40px;
+  padding: 12px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--gray-300);
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--gray-700);
+  text-align: left;
+}
+
+.chips--formato { flex-wrap: nowrap; overflow-x: auto; align-self: stretch; margin: 0 calc(var(--space-4) * -1); padding: 0 var(--space-4); }
+.chips--formato::-webkit-scrollbar { display: none; }
+
+/* ---------- Listas guardadas ---------- */
+
+.listas { display: flex; gap: 10px; width: 100%; }
+
+.lista {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--gray-300);
+  overflow: hidden;
+  text-align: left;
+}
+
+.lista__icono {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-content: center;
+  color: var(--base-white);
+}
+
+.lista__icono--favoritos { background: var(--brand-purple-200); }
+.lista__icono--tarde { background: var(--brand-red-200); }
+.lista__nombre { font-size: 14px; line-height: 1.3; color: var(--base-black); }
+
+/* ---------- Pieza de contenido ----------
+   La fila de una lista. El formato decide la forma de la miniatura. */
+
+.pieza {
+  width: 100%;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+}
+
+.pieza__miniatura {
+  flex: none;
+  width: 96px;
+  height: 54px;
+  border-radius: var(--radius-md);
+}
+
+.pieza__miniatura--cuadrada { width: 54px; }
+
+.pieza__textos { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.pieza__titulo { font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--brand-lavender-1000); }
+.pieza__meta { font-size: 10px; line-height: 1.4; color: var(--content-tertiary); }
+
+/* ---------- Indicador guardado ----------
+   Para ver desde fuera en qué lista está guardada una pieza. */
+
+.guardado { flex: none; display: flex; gap: 4px; color: var(--brand-red-300); }
+
+/* ---------- Botón reproducir ---------- */
+
+.btn-play {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-content: center;
+  border: 0;
+  border-radius: 16px;
+  background: var(--bg-brand);
+  color: var(--content-onbrand);
+}
+
+.btn-play--sobre-media {
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  background: var(--base-white);
+  color: var(--gray-900);
+}
+
+/* ---------- Mini player ----------
+   Barra de continuar: aparece cuando hay algo abierto y no terminado. */
+
+.mini-player {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: calc(var(--navbar-h) + 8px);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: var(--radius-lg);
+  background: var(--gray-100);
+  overflow: hidden;
+  z-index: 20;
+}
+
+.mini-player[hidden] { display: none; }
+.mini-player .btn-play[hidden] { display: none; }
+
+.mini-player__abrir {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  background: none;
+  text-align: left;
+  padding: 0;
+}
+
+.mini-player__portada { flex: none; width: 44px; height: 44px; border-radius: var(--radius-md); }
+.mini-player__textos { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.mini-player__titulo { font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--brand-lavender-1000); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mini-player__meta { font-size: 10px; line-height: 1.4; color: var(--content-tertiary); }
+
+.mini-player__cerrar {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: none;
+  font-size: 12px;
+  color: var(--content-tertiary);
+}
+
+.mini-player__progreso {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30%;
+  background: var(--bg-brand);
+}
+
+/* ---------- Fila de búsqueda ---------- */
+
+.fila-busqueda { display: flex; align-items: center; gap: 10px; width: 100%; }
+
+.buscador--activo {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--gray-700);
+  color: var(--gray-700);
+}
+
+.buscador__campo {
+  flex: 1 1 0;
+  min-width: 0;
+  border: 0;
+  background: none;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--gray-700);
+}
+
+.buscador__campo:focus { outline: none; }
+.buscador__texto { font-size: 14px; line-height: 1.3; color: var(--gray-700); }
+
+.btn-cancelar {
+  flex: none;
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border: 0;
+  background: none;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--base-black);
+}
+
+/* ---------- Sugerencias ---------- */
+
+.sugerencias { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+
+.sugerencia {
+  width: 100%;
+  min-height: var(--tap);
+  padding: 12px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--brand-lavender-100);
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--base-black);
+  text-align: left;
+}
+
+.sugerencia[hidden] { display: none; }
+
+/* ---------- Estado vacío y cuenta de resultados ---------- */
+
+.vacio {
+  width: 100%;
+  min-height: 64px;
+  margin: 0;
+  padding: 20px 14px;
+  border-radius: 2px;
+  background: var(--gray-300);
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--base-black);
+  text-align: center;
+}
+
+.resultados__cuenta { margin: 0; font-size: 10px; line-height: 1.4; color: var(--content-tertiary); }
+
+/* ---------- Portada de contenido ---------- */
+
+.portada {
+  width: 100%;
+  height: 181px;
+  border-radius: 2px;
+  background: var(--gray-300);
+}
+
+/* ---------- Cabecera y cuerpo de una pieza ---------- */
+
+.contenido__cabecera { display: flex; flex-direction: column; gap: 6px; width: 100%; }
+.contenido__titular { margin: 0; color: var(--base-black); }
+.contenido__meta { margin: 0; font-size: 10px; line-height: 1.4; color: var(--content-tertiary); }
+
+.contenido__cuerpo { display: flex; flex-direction: column; gap: 16px; width: 100%; }
+.contenido__cuerpo p { margin: 0; font-size: 14px; line-height: 1.3; color: var(--gray-700); }
+
+/* ---------- Botón favorito y botón ver más tarde ----------
+   Interruptores independientes: una pieza puede estar en las dos listas. */
+
+.acciones-guardar { display: flex; gap: 16px; }
+
+.accion-guardar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: var(--tap);
+  min-height: var(--tap);
+  padding: 4px 8px;
+  border: 0;
+  background: none;
+  color: #b8b8bd;
+  font-size: 10px;
+  line-height: 1.4;
+  transition: color 0.18s ease;
+}
+
+.accion-guardar[aria-pressed="true"][data-guardar="favoritos"] { color: var(--brand-red-300); }
+.accion-guardar[aria-pressed="true"][data-guardar="ver-mas-tarde"] { color: var(--brand-purple-300); }
+.accion-guardar[aria-pressed="true"] span { color: var(--content-default); }
+
+/* ---------- Bloque de fuente ----------
+   Va en toda pieza de contenido. Sin fuente, marcador visible. */
+
+.bloque-fuente { display: flex; flex-direction: column; gap: 4px; width: 100%; }
+.bloque-fuente__titulo { margin: 0; font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--brand-lavender-1000); }
+.bloque-fuente__valor { margin: 0; font-size: 10px; font-weight: 700; line-height: 1.4; color: var(--content-tertiary); }
+
+.separador-fino { width: 100%; height: 1px; margin: 0; border: 0; background: var(--gray-300); }
+
+/* ---------- Bloque de feedback ----------
+   Cierra toda pieza de contenido. */
+
+.feedback { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; }
+.feedback__pregunta { margin: 0; font-size: 10px; line-height: 1.4; color: var(--content-tertiary); }
+.feedback__botones { display: flex; gap: 10px; }
+
+.feedback__boton {
+  width: 110px;
+  min-height: var(--tap);
+  border: 1px solid var(--base-black);
+  border-radius: 2px;
+  background: var(--bg-default);
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--base-black);
+}
+
+.feedback__boton[aria-pressed="true"] { background: var(--brand-lavender-1000); color: var(--base-white); }
+
+/* ---------- Botón reproducir grande (pantalla de podcast) ---------- */
+
+.btn-play--grande { width: 64px; height: 64px; border-radius: 32px; }
+
+/* ---------- Barra de progreso y controles ---------- */
+
+.progreso {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: #e0e0e5;
+  overflow: hidden;
+}
+
+.progreso__hecho { display: block; height: 100%; border-radius: 2px; background: var(--bg-brand); }
+
+.tiempos {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--content-tertiary);
+}
+
+.controles { display: flex; align-items: center; gap: 40px; }
+
+.controles__salto {
+  min-width: var(--tap);
+  min-height: var(--tap);
+  border: 0;
+  background: none;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #595966;
+}
+
+.contenido__descripcion { margin: 0; width: 100%; font-size: 14px; line-height: 1.3; color: var(--gray-700); }
+.contenido__descripcion--centrada { text-align: center; }
+
+/* ==========================================================================
+   Assets exportados de Figma
+   Los iconos de la navbar vienen en blanco: en la pestaña encendida, que
+   tiene la pastilla blanca, se invierten para que se vean.
+   ========================================================================== */
+
+/* Los PNG se pintan en negro con el filtro; al 54 % de opacidad sobre blanco
+   dan exactamente gray/500 (#757575), el color de las tabs inactivas. */
+.navbar__tab img { width: 30px; height: 30px; object-fit: contain; filter: brightness(0); opacity: 0.54; }
+.navbar__tab[aria-current="page"] img { opacity: 1; }
+
+.icono-marca { width: 20px; height: 20px; object-fit: contain; }
+.campo__ojo-icono { width: 20px; height: 20px; object-fit: contain; }
+
+/* Card de mito ----------------------------------------------------------
+   Cada forma es un trazado propio dibujado a mano: se elige la que mejor
+   encaja con la longitud del texto, y el tamaño no indica jerarquía. Las
+   medidas y los márgenes de texto salen del componente de Figma. */
+.card-mito {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent no-repeat center / 100% 100%;
+}
+
+.card-mito--1 {
+  width: 148px; height: 82px;
+  padding: 14px 22px 15px 20px;
+  background-image: url("../assets/icons/cardmitos-1.png");
+}
+
+.card-mito--2 {
+  width: 184px; height: 112px;
+  padding: 19px 28px 21px 25px;
+  background-image: url("../assets/icons/cardmitos-2.png");
+}
+
+.card-mito--4 {
+  width: 198px; height: 101px;
+  padding: 18px 22px 17px 20px;
+  background-image: url("../assets/icons/cardmitos-4.png");
+}
+
+.card-mito--3 {
+  width: 138px; height: 107px;
+  padding: 20px 16px 21px 15px;
+  background-image: url("../assets/icons/cardmitos-3.png");
+}
+
+.card-mito--5 {
+  width: 224px; height: 81px;
+  padding: 22px 22px 15px 20px;
+  background-image: url("../assets/icons/cardmitos-5.png");
+}
+
+.card-mito--grande {
+  width: 100%;
+  height: auto;
+  padding: 26px 30px 30px;
+  text-align: left;
+}
+
+/* La chincheta de la card de la pregunta del día. */
+.card-pregunta__chincheta {
+  position: absolute;
+  top: -26px;
+  right: 10px;
+  width: 72px;
+  transform: rotate(-20deg);
+  pointer-events: none;
+}
+
+
+.mini-player__cerrar img { width: 12px; height: 12px; object-fit: contain; opacity: 0.6; }
+
+/* ==========================================================================
+   Secciones de la home (Figma: Design System · Secciones de contenido)
+   ========================================================================== */
+
+.seccion[hidden] { display: none; }
+
+/* Recién llegado: la pieza destacada ocupa todo el ancho */
+.card-video--destacada { width: 100%; }
+.card-video--destacada .card-video__miniatura { height: auto; aspect-ratio: 16 / 9; }
+
+/* Lo más escuchado: portadas cuadradas con la posición encima */
+.podcast-top {
+  position: relative;
+  flex: none;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+}
+.podcast-top__portada { width: 140px; height: 140px; border-radius: var(--radius-md); background: var(--gray-300); }
+.podcast-top__posicion { position: absolute; left: 12px; top: 96px; color: var(--base-black); }
+.podcast-top__titulo { font-size: 14px; font-weight: 600; line-height: 1.3; color: var(--base-black); }
+.podcast-top__meta { font-size: 10px; line-height: 1.4; color: var(--content-tertiary); }
+
+/* Lo más leído: índice sin miniaturas */
+.indice { display: flex; flex-direction: column; gap: var(--space-4); margin: 0; padding: 0; list-style: none; }
+.indice__item { width: 100%; min-height: var(--tap); display: flex; align-items: center; gap: var(--space-4); padding: 0; border: 0; background: none; text-align: left; }
+.indice__posicion { flex: none; width: 28px; color: var(--base-black); }
+.indice__textos { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+
+/* Tus temas (solo home personalizada) */
+.tus-temas { display: flex; gap: var(--space-3); }
+.tema {
+  flex: 1 1 0;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4px;
+  padding: var(--space-4);
+  border: 0;
+  border-radius: var(--radius-lg);
+  text-align: left;
+}
+.tema--morado { background: var(--brand-purple-300); color: var(--base-white); }
+.tema--coral { background: var(--brand-coral-300); color: var(--brand-purple-1000); }
+.tema__nombre { font-size: 16px; font-weight: 600; line-height: 1.3; }
+.tema__accion { font-size: 12px; line-height: 1.3; }
+
+/* Voces */
+.voces { gap: var(--space-4); }
+.voz { flex: none; width: 80px; display: flex; flex-direction: column; align-items: center; gap: var(--space-2); }
+.voz__foto { width: 72px; height: 72px; border-radius: 50%; background: var(--gray-300); }
+.voz__nombre { font-size: 12px; line-height: 1.3; text-align: center; color: var(--base-black); }
