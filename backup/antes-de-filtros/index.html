@@ -270,22 +270,22 @@
       <section class="seccion" data-home="generica">
         <h2 class="seccion__titulo">Explora por temas</h2>
         <div class="chips chips--panel">
-          <button type="button" class="chip" data-ir="biblioteca" data-tema="Deseo y fantasías">Deseo y fantasías</button>
-          <button type="button" class="chip" data-ir="biblioteca" data-tema="Límites">Límites</button>
-          <button type="button" class="chip" data-ir="biblioteca" data-tema="Comunicación en pareja">Comunicación en pareja</button>
-          <button type="button" class="chip" data-ir="biblioteca" data-tema="Placer">Placer</button>
-          <button type="button" class="chip" data-ir="biblioteca" data-tema="Consentimiento">Consentimiento</button>
-          <button type="button" class="chip" data-ir="biblioteca" data-tema="Cómo funciona el cuerpo">Cómo funciona el cuerpo</button>
-          <button type="button" class="chip" data-ir="biblioteca" data-tema="Celos">Celos</button>
-          <button type="button" class="chip" data-ir="biblioteca" data-tema="Salud sexual">Salud sexual</button>
+          <button type="button" class="chip" data-ir="biblioteca">Deseo y fantasías</button>
+          <button type="button" class="chip" data-ir="biblioteca">Límites</button>
+          <button type="button" class="chip" data-ir="biblioteca">Comunicación en pareja</button>
+          <button type="button" class="chip" data-ir="biblioteca">Placer</button>
+          <button type="button" class="chip" data-ir="biblioteca">Consentimiento</button>
+          <button type="button" class="chip" data-ir="biblioteca">Cómo funciona el cuerpo</button>
+          <button type="button" class="chip" data-ir="biblioteca">Celos</button>
+          <button type="button" class="chip" data-ir="biblioteca">Salud sexual</button>
         </div>
       </section>
 
       <section class="seccion" data-home="personalizada" hidden>
         <h2 class="seccion__titulo">Tus temas</h2>
         <div class="tus-temas">
-          <button type="button" class="tema tema--morado" data-ir="biblioteca" data-tema="Deseo y fantasías"><span class="tema__nombre">Deseo y fantasías</span><span class="tema__accion">Ver contenido →</span></button>
-          <button type="button" class="tema tema--coral" data-ir="biblioteca" data-tema="Falta de deseo"><span class="tema__nombre">Falta de deseo</span><span class="tema__accion">Ver contenido →</span></button>
+          <button type="button" class="tema tema--morado" data-ir="biblioteca"><span class="tema__nombre">Deseo y fantasías</span><span class="tema__accion">Ver contenido →</span></button>
+          <button type="button" class="tema tema--coral" data-ir="biblioteca"><span class="tema__nombre">Falta de deseo</span><span class="tema__accion">Ver contenido →</span></button>
         </div>
       </section>
 
@@ -844,12 +844,6 @@
         <button type="button" class="chip" data-formato="articulo" aria-pressed="false">Artículos</button>
         <button type="button" class="chip" data-formato="podcast" aria-pressed="false">Podcast</button>
         <button type="button" class="chip" data-formato="video" aria-pressed="false">Vídeos</button>
-        <!-- Botón filtros: abre la hoja con más filtros. Con filtros activos
-             se pone en negro y enseña cuántos hay. Ver js/biblioteca.js -->
-        <button type="button" class="btn-filtros" id="btn-filtros" data-abre="modal-filtros" aria-label="Filtros">
-          <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 4H9M13 4H14M2 12H3M7 12H14" stroke-linecap="round"/><circle cx="11" cy="4" r="2"/><circle cx="5" cy="12" r="2"/></svg>
-          <span class="btn-filtros__cuenta" id="btn-filtros-cuenta" hidden></span>
-        </button>
       </div>
 
       <div class="listas">
@@ -1451,39 +1445,6 @@
     <div class="sheet__acciones">
       <button type="button" class="btn btn--primario" data-cierra data-ir="crear-cuenta">Crear cuenta</button>
       <button type="button" class="btn btn--texto" data-cierra>Ahora no</button>
-    </div>
-  </div>
-
-  <!-- Filtros de la Biblioteca. El formato va unido a los chips de fuera:
-       lo que eliges en un sitio se ve en el otro. -->
-  <div class="sheet" id="modal-filtros" role="dialog" aria-modal="true" aria-labelledby="modal-filtros-titulo" data-open="false">
-    <span class="sheet__asa" aria-hidden="true"></span>
-    <h2 class="filtros__titulo" id="modal-filtros-titulo">Filtros</h2>
-    <div class="filtros__grupo">
-      <h3 class="filtros__nombre">Formato</h3>
-      <div class="chips" id="filtros-formato">
-        <button type="button" class="chip" data-formato="articulo" aria-pressed="false">Artículos</button>
-        <button type="button" class="chip" data-formato="podcast" aria-pressed="false">Podcast</button>
-        <button type="button" class="chip" data-formato="video" aria-pressed="false">Vídeos</button>
-      </div>
-    </div>
-    <div class="filtros__grupo">
-      <h3 class="filtros__nombre">Temas</h3>
-      <div class="chips" id="filtros-temas">
-        <button type="button" class="chip" data-tema="Deseo y fantasías" aria-pressed="false">Deseo y fantasías</button>
-        <button type="button" class="chip" data-tema="Falta de deseo" aria-pressed="false">Falta de deseo</button>
-        <button type="button" class="chip" data-tema="Comunicación en pareja" aria-pressed="false">Comunicación en pareja</button>
-        <button type="button" class="chip" data-tema="Consentimiento" aria-pressed="false">Consentimiento</button>
-        <button type="button" class="chip" data-tema="Cómo funciona el cuerpo" aria-pressed="false">Cómo funciona el cuerpo</button>
-        <button type="button" class="chip" data-tema="Salud sexual" aria-pressed="false">Salud sexual</button>
-        <button type="button" class="chip" data-tema="Placer" aria-pressed="false">Placer</button>
-        <button type="button" class="chip" data-tema="Límites" aria-pressed="false">Límites</button>
-        <button type="button" class="chip" data-tema="Celos" aria-pressed="false">Celos</button>
-      </div>
-    </div>
-    <div class="sheet__acciones">
-      <button type="button" class="btn btn--primario" id="filtros-ver" data-cierra>Ver resultados</button>
-      <button type="button" class="btn btn--texto" id="filtros-borrar">Borrar filtros</button>
     </div>
   </div>
 

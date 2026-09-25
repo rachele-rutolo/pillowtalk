@@ -27,17 +27,6 @@
 
 <main class="device" data-orientation="portrait">
 
-  <!-- Status bar: fija arriba en todas las pantallas. Claro u oscuro según el fondo (js/router.js). -->
-  <div class="status-bar" aria-hidden="true">
-    <span class="status-bar__hora">9:41</span>
-    <span class="status-bar__isla"></span>
-    <svg class="status-bar__iconos" width="78" height="13" viewBox="0 0 78 13" fill="none">
-      <rect x="0" y="8" width="3" height="4" rx="1" fill="currentColor"/><rect x="4.5" y="6" width="3" height="6" rx="1" fill="currentColor"/><rect x="9" y="3.5" width="3" height="8.5" rx="1" fill="currentColor"/><rect x="13.5" y="1" width="3" height="11" rx="1" fill="currentColor"/>
-      <path d="M29.5 3.2c2.1 0 4 .8 5.4 2.1l1.1-1.1C34.3 2.6 32 1.6 29.5 1.6S24.7 2.6 23 4.2l1.1 1.1c1.4-1.3 3.3-2.1 5.4-2.1Z" fill="currentColor"/><path d="M29.5 6.4c1.2 0 2.3.5 3.2 1.2l1.1-1.1c-1.1-1-2.6-1.7-4.3-1.7s-3.2.6-4.3 1.7l1.1 1.1c.9-.8 2-1.2 3.2-1.2Z" fill="currentColor"/><path d="M29.5 9.5c.4 0 .8.2 1.1.4l-1.1 1.1-1.1-1.1c.3-.3.7-.4 1.1-.4Z" fill="currentColor"/>
-      <rect x="49.5" y="1" width="24" height="11" rx="3.5" stroke="currentColor" stroke-opacity="0.45"/><rect x="51.5" y="3" width="20" height="7" rx="2" fill="currentColor"/><path d="M75 4.5v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2Z" fill="currentColor" fill-opacity="0.5"/>
-    </svg>
-  </div>
-
   <!-- ===================== ENTRADA ===================== -->
 
   <section class="screen" id="springboard" aria-label="Pantalla de inicio del móvil">
@@ -179,25 +168,17 @@
         </div>
       </section>
 
-      <!-- Recién llegado: carrusel con la misma card para los tres formatos -->
+      <!-- Recién llegado: la pieza más nueva destacada y dos más en lista -->
       <section class="seccion">
         <h2 class="seccion__titulo">Recién llegado</h2>
-        <div class="fila">
-          <button type="button" data-contenido="v-condon" class="card-video" data-ir="contenido-video">
-            <span class="card-video__miniatura sin-imagen">falta imagen</span>
-            <span class="card-video__titulo">Cómo se pone un condón de verdad (sin dramas)</span>
-            <span class="card-video__meta">Diego Ferrer · vídeo · 3:20</span>
-          </button>
-          <button type="button" data-contenido="p-parejas" class="card-video" data-ir="contenido-podcast">
-            <span class="card-video__miniatura sin-imagen">falta imagen</span>
-            <span class="card-video__titulo">Parejas que se lo cuentan todo (o casi)</span>
-            <span class="card-video__meta">Diego Ferrer · podcast · 28 min</span>
-          </button>
-          <button type="button" data-contenido="a-dilatadores" class="card-video" data-ir="contenido-articulo">
-            <span class="card-video__miniatura sin-imagen">falta imagen</span>
-            <span class="card-video__titulo">Dilatadores vaginales: no son solo para el dolor</span>
-            <span class="card-video__meta">Marta Aguilar · artículo · 4 min</span>
-          </button>
+        <button type="button" data-contenido="video-lubricarse" class="card-video card-video--destacada" data-ir="contenido-video">
+          <span class="card-video__miniatura sin-imagen">falta imagen</span>
+          <span class="card-video__titulo">Lubricarse no es un examen</span>
+          <span class="card-video__meta">Nombre de la autora · vídeo · 4:05</span>
+        </button>
+        <div class="piezas">
+          <button type="button" class="pieza" data-contenido="podcast-sin-bata" data-ir="contenido-podcast"><span class="pieza__miniatura pieza__miniatura--cuadrada" aria-hidden="true"></span><span class="pieza__textos"><span class="pieza__titulo">Sin bata</span><span class="pieza__meta">podcast · 15 min</span></span><span class="btn-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7L8 5Z"/></svg></span></button>
+          <button type="button" class="pieza" data-contenido="articulo-its" data-ir="contenido-articulo"><span class="pieza__miniatura" aria-hidden="true"></span><span class="pieza__textos"><span class="pieza__titulo">Pruebas de ITS: cuáles, cuándo y cómo pedirlas</span><span class="pieza__meta">artículo · 8 min</span></span></button>
         </div>
       </section>
 
@@ -207,11 +188,11 @@
       <section class="seccion">
         <h2 class="seccion__titulo">Seguro que no lo sabías</h2>
         <div class="mitos">
-          <button type="button" class="card-mito card-mito--1" data-mito="eyaculacion-femenina" data-ir="home-detalle-mito" style="left:0; top:0"><span>eyaculación<br>femenina</span></button>
-          <button type="button" class="card-mito card-mito--2" data-mito="penetracion-orgasmo" data-ir="home-detalle-mito" style="left:172px; top:1px"><span>La penetración<br>basta para el<br>orgasmo</span></button>
-          <button type="button" class="card-mito card-mito--3" data-mito="himen" data-ir="home-detalle-mito" style="left:0; top:95px"><span>El himen se rompe la primera vez</span></button>
-          <button type="button" class="card-mito card-mito--4" data-mito="hombres-mas-sexo" data-ir="home-detalle-mito" style="left:160px; top:131px"><span>Los hombres<br>quieren sexo más<br>que las mujeres</span></button>
-          <button type="button" class="card-mito card-mito--5" data-mito="cuerpo-responde" data-ir="home-detalle-mito" style="left:133px; top:244px"><span>Si tu cuerpo responde,<br>es que te apetece</span></button>
+          <button type="button" class="card-mito card-mito--2" data-ir="home-detalle-mito" style="left:167px; top:0">La penetración basta para el orgasmo</button>
+          <button type="button" class="card-mito card-mito--3" data-ir="home-detalle-mito" style="left:0; top:6px">El himen se rompe la primera vez</button>
+          <button type="button" class="card-mito card-mito--3" data-ir="home-detalle-mito" style="left:0; top:124px">El himen se rompe la primera vez</button>
+          <button type="button" class="card-mito card-mito--2" data-ir="home-detalle-mito" style="left:170px; top:122px">La penetración basta para el orgasmo</button>
+          <button type="button" class="card-mito card-mito--5" data-ir="home-detalle-mito" style="left:130px; top:242px">Si tu cuerpo responde, es que te apetece</button>
           <img class="mitos__ojos" src="assets/icons/ojos.png" alt="" style="left:27px; top:245px">
         </div>
       </section>
@@ -220,23 +201,23 @@
       <section class="seccion">
         <h2 class="seccion__titulo">Lo más escuchado esta semana</h2>
         <div class="fila">
-          <button type="button" class="podcast-top" data-contenido="p-sexo-40" data-ir="contenido-podcast">
+          <button type="button" class="podcast-top" data-contenido="podcast-deseo-horario" data-ir="contenido-podcast">
             <span class="podcast-top__portada" aria-hidden="true"></span>
             <span class="podcast-top__posicion t-lettering-l" aria-hidden="true">1</span>
-            <span class="podcast-top__titulo">Sexo después de los 40, sin el mito de la decadencia</span>
-            <span class="podcast-top__meta">podcast · 35 min</span>
+            <span class="podcast-top__titulo">Deseo con horario</span>
+            <span class="podcast-top__meta">podcast · 42 min</span>
           </button>
-          <button type="button" class="podcast-top" data-contenido="p-lo-que-no-me-contaron" data-ir="contenido-podcast">
+          <button type="button" class="podcast-top" data-contenido="podcast-yo-tampoco" data-ir="contenido-podcast">
             <span class="podcast-top__portada" aria-hidden="true"></span>
             <span class="podcast-top__posicion t-lettering-l" aria-hidden="true">2</span>
-            <span class="podcast-top__titulo">Lo que no me contaron</span>
-            <span class="podcast-top__meta">podcast · 32 min</span>
+            <span class="podcast-top__titulo">Yo tampoco sabía</span>
+            <span class="podcast-top__meta">podcast · 38 min</span>
           </button>
-          <button type="button" class="podcast-top" data-contenido="p-deseo-no-coincide" data-ir="contenido-podcast">
+          <button type="button" class="podcast-top" data-contenido="podcast-sin-bata" data-ir="contenido-podcast">
             <span class="podcast-top__portada" aria-hidden="true"></span>
             <span class="podcast-top__posicion t-lettering-l" aria-hidden="true">3</span>
-            <span class="podcast-top__titulo">Cuando el deseo no coincide</span>
-            <span class="podcast-top__meta">podcast · 30 min</span>
+            <span class="podcast-top__titulo">Sin bata</span>
+            <span class="podcast-top__meta">podcast · 15 min</span>
           </button>
         </div>
       </section>
@@ -260,32 +241,32 @@
       <section class="seccion">
         <h2 class="seccion__titulo">Lo más leído esta semana</h2>
         <ol class="indice">
-          <li><button type="button" class="indice__item" data-contenido="a-porno-consentimiento" data-ir="contenido-articulo"><span class="indice__posicion t-lettering-l" aria-hidden="true">1</span><span class="indice__textos"><span class="pieza__titulo">Lo que el porno no te enseña sobre el consentimiento</span><span class="pieza__meta">artículo · 6 min</span></span></button></li>
-          <li><button type="button" class="indice__item" data-contenido="a-te-cuesta-llegar" data-ir="contenido-articulo"><span class="indice__posicion t-lettering-l" aria-hidden="true">2</span><span class="indice__textos"><span class="pieza__titulo">Por qué te cuesta llegar (y no es solo cabeza)</span><span class="pieza__meta">artículo · 6 min</span></span></button></li>
-          <li><button type="button" class="indice__item" data-contenido="a-punto-g" data-ir="contenido-articulo"><span class="indice__posicion t-lettering-l" aria-hidden="true">3</span><span class="indice__textos"><span class="pieza__titulo">El punto G no es un botón mágico</span><span class="pieza__meta">artículo · 5 min</span></span></button></li>
+          <li><button type="button" class="indice__item" data-contenido="articulo-consentimiento" data-ir="contenido-articulo"><span class="indice__posicion t-lettering-l" aria-hidden="true">1</span><span class="indice__textos"><span class="pieza__titulo">Consentimiento cuando ya lleváis años</span><span class="pieza__meta">artículo · 7 min</span></span></button></li>
+          <li><button type="button" class="indice__item" data-contenido="articulo-orgasmo" data-ir="contenido-articulo"><span class="indice__posicion t-lettering-l" aria-hidden="true">2</span><span class="indice__textos"><span class="pieza__titulo">El orgasmo no es la meta (y se nota cuando lo es)</span><span class="pieza__meta">artículo · 6 min</span></span></button></li>
+          <li><button type="button" class="indice__item" data-contenido="articulo-its" data-ir="contenido-articulo"><span class="indice__posicion t-lettering-l" aria-hidden="true">3</span><span class="indice__textos"><span class="pieza__titulo">Pruebas de ITS: cuáles, cuándo y cómo pedirlas</span><span class="pieza__meta">artículo · 8 min</span></span></button></li>
         </ol>
       </section>
 
       <!-- Home genérica: todos los temas. Home personalizada: los temas elegidos. -->
       <section class="seccion" data-home="generica">
         <h2 class="seccion__titulo">Explora por temas</h2>
-        <div class="chips chips--panel">
-          <button type="button" class="chip" data-ir="biblioteca" data-tema="Deseo y fantasías">Deseo y fantasías</button>
-          <button type="button" class="chip" data-ir="biblioteca" data-tema="Límites">Límites</button>
-          <button type="button" class="chip" data-ir="biblioteca" data-tema="Comunicación en pareja">Comunicación en pareja</button>
-          <button type="button" class="chip" data-ir="biblioteca" data-tema="Placer">Placer</button>
-          <button type="button" class="chip" data-ir="biblioteca" data-tema="Consentimiento">Consentimiento</button>
-          <button type="button" class="chip" data-ir="biblioteca" data-tema="Cómo funciona el cuerpo">Cómo funciona el cuerpo</button>
-          <button type="button" class="chip" data-ir="biblioteca" data-tema="Celos">Celos</button>
-          <button type="button" class="chip" data-ir="biblioteca" data-tema="Salud sexual">Salud sexual</button>
+        <div class="chips">
+          <button type="button" class="chip" data-ir="biblioteca">Deseo y fantasías</button>
+          <button type="button" class="chip" data-ir="biblioteca">Límites</button>
+          <button type="button" class="chip" data-ir="biblioteca">Comunicación en pareja</button>
+          <button type="button" class="chip" data-ir="biblioteca">Placer</button>
+          <button type="button" class="chip" data-ir="biblioteca">Consentimiento</button>
+          <button type="button" class="chip" data-ir="biblioteca">Cómo funciona el cuerpo</button>
+          <button type="button" class="chip" data-ir="biblioteca">Celos</button>
+          <button type="button" class="chip" data-ir="biblioteca">Salud sexual</button>
         </div>
       </section>
 
       <section class="seccion" data-home="personalizada" hidden>
         <h2 class="seccion__titulo">Tus temas</h2>
         <div class="tus-temas">
-          <button type="button" class="tema tema--morado" data-ir="biblioteca" data-tema="Deseo y fantasías"><span class="tema__nombre">Deseo y fantasías</span><span class="tema__accion">Ver contenido →</span></button>
-          <button type="button" class="tema tema--coral" data-ir="biblioteca" data-tema="Falta de deseo"><span class="tema__nombre">Falta de deseo</span><span class="tema__accion">Ver contenido →</span></button>
+          <button type="button" class="tema tema--morado" data-ir="biblioteca"><span class="tema__nombre">Deseo y fantasías</span><span class="tema__accion">Ver contenido →</span></button>
+          <button type="button" class="tema tema--coral" data-ir="biblioteca"><span class="tema__nombre">Falta de deseo</span><span class="tema__accion">Ver contenido →</span></button>
         </div>
       </section>
 
@@ -293,20 +274,20 @@
       <section class="seccion">
         <h2 class="seccion__titulo" id="home-videos-titulo">Vídeos para empezar</h2>
         <div class="fila">
-          <button type="button" data-contenido="v-vulva-101" class="card-video" data-ir="contenido-video">
+          <button type="button" data-contenido="video-clitoris" class="card-video" data-ir="contenido-video">
             <span class="card-video__miniatura sin-imagen">falta imagen</span>
-            <span class="card-video__titulo">Vulva 101: lo que el colegio no explicó</span>
-            <span class="card-video__meta">Marta Aguilar · vídeo · 5:00</span>
+            <span class="card-video__titulo">El clítoris entero, en 3 minutos</span>
+            <span class="card-video__meta">Nombre de la autora · vídeo · 3:10</span>
           </button>
-          <button type="button" data-contenido="v-lubricante" class="card-video" data-ir="contenido-video">
+          <button type="button" data-contenido="video-lubricarse" class="card-video" data-ir="contenido-video">
             <span class="card-video__miniatura sin-imagen">falta imagen</span>
-            <span class="card-video__titulo">Lubricante: guía rápida para no acertar a ciegas</span>
-            <span class="card-video__meta">Nadia Roldán · vídeo · 3:45</span>
+            <span class="card-video__titulo">Lubricarse no es un examen</span>
+            <span class="card-video__meta">Nombre de la autora · vídeo · 4:05</span>
           </button>
-          <button type="button" data-contenido="v-anatomia-deseo" class="card-video" data-ir="contenido-video">
+          <button type="button" data-contenido="video-yo-tampoco-video" class="card-video" data-ir="contenido-video">
             <span class="card-video__miniatura sin-imagen">falta imagen</span>
-            <span class="card-video__titulo">Anatomía del deseo, en 4 minutos</span>
-            <span class="card-video__meta">Marta Aguilar · vídeo · 4:12</span>
+            <span class="card-video__titulo">Yo tampoco sabía</span>
+            <span class="card-video__meta">Nombre de la autora · vídeo · 2:48</span>
           </button>
         </div>
       </section>
@@ -351,15 +332,15 @@
 
       <h2 class="seccion__titulo">Contenido relacionado</h2>
       <div class="fila">
-        <button type="button" data-contenido="v-vulva-101" class="card-video card-video--pequena" data-ir="contenido-video">
+        <button type="button" data-contenido="video-clitoris" class="card-video card-video--pequena" data-ir="contenido-video">
           <span class="card-video__miniatura sin-imagen">falta imagen</span>
-          <span class="card-video__titulo">Vulva 101: lo que el colegio no explicó</span>
-          <span class="card-video__meta">Marta Aguilar · vídeo · 5:00</span>
+          <span class="card-video__titulo">El clítoris entero, en 3 minutos</span>
+          <span class="card-video__meta">Nombre de la autora · vídeo · 3:10</span>
         </button>
-        <button type="button" data-contenido="v-lubricante" class="card-video card-video--pequena" data-ir="contenido-video">
+        <button type="button" data-contenido="video-lubricarse" class="card-video card-video--pequena" data-ir="contenido-video">
           <span class="card-video__miniatura sin-imagen">falta imagen</span>
-          <span class="card-video__titulo">Lubricante: guía rápida para no acertar a ciegas</span>
-          <span class="card-video__meta">Nadia Roldán · vídeo · 3:45</span>
+          <span class="card-video__titulo">Lubricarse no es un examen</span>
+          <span class="card-video__meta">Nombre de la autora · vídeo · 4:05</span>
         </button>
       </div>
     </div>
@@ -796,40 +777,40 @@
     <div class="screen__scroll">
       <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 
-      <p class="card-mito card-mito--grande card-mito--5" data-campo="afirmacion">"El himen se rompe la primera vez"</p>
+      <p class="card-mito card-mito--grande card-mito--5">"El himen se rompe la primera vez"</p>
 
       <div class="mito__textos">
         <h1 class="seccion__titulo">Respuesta</h1>
-        <p class="mito__cuerpo" data-campo="respuesta">El himen es un pliegue de tejido elástico en la entrada de la vagina, y su forma cambia muchísimo de una persona a otra. No sella nada, así que no hay nada que romper como si fuera un precinto. Puede estirarse, puede molestar, puede sangrar o no, y nada de eso dice absolutamente nada sobre lo que esa persona ha hecho o dejado de hacer.</p>
+        <p class="mito__cuerpo">El himen es un pliegue de tejido elástico en la entrada de la vagina, y su forma cambia muchísimo de una persona a otra. No sella nada, así que no hay nada que romper como si fuera un precinto. Puede estirarse, puede molestar, puede sangrar o no, y nada de eso dice absolutamente nada sobre lo que esa persona ha hecho o dejado de hacer.</p>
       </div>
 
       <!-- Todo dato lleva fuente (regla 9). -->
       <div class="dato">
-        <p class="dato__titular" data-campo="dato-titular">En Suecia le cambiaron el nombre</p>
-        <p class="dato__cuerpo" data-campo="dato-cuerpo">Desde 2009 la asociación sueca de educación sexual lo llama corona vaginal en lugar de himen, precisamente para romper con la idea de membrana que se rompe.</p>
-        <p class="dato__fuente" data-campo="dato-fuente">RFSU, Asociación Sueca de Educación Sexual</p>
+        <p class="dato__titular">En Suecia le cambiaron el nombre</p>
+        <p class="dato__cuerpo">Desde 2009 la asociación sueca de educación sexual lo llama corona vaginal en lugar de himen, precisamente para romper con la idea de membrana que se rompe.</p>
+        <p class="dato__fuente">RFSU, Asociación Sueca de Educación Sexual</p>
       </div>
 
       <button type="button" class="autoria">
-        <img class="autoria__retrato" data-campo="autoria-retrato" src="assets/icons/imagen perfil fuente.png" alt="">
+        <img class="autoria__retrato" src="assets/icons/imagen perfil fuente.png" alt="">
         <span class="autoria__datos">
-          <span class="autoria__nombre" data-campo="autoria-nombre">RFSU</span>
-          <span class="autoria__rol" data-campo="autoria-rol">Asociación Sueca de Educación Sexual</span>
+          <span class="autoria__nombre">RFSU</span>
+          <span class="autoria__rol">Asociación Sueca de Educación Sexual</span>
         </span>
         <span class="autoria__flecha" aria-hidden="true">›</span>
       </button>
 
       <h2 class="seccion__titulo">Contenido relacionado</h2>
       <div class="fila">
-        <button type="button" data-contenido="v-vulva-101" class="card-video card-video--pequena" data-ir="contenido-video">
+        <button type="button" data-contenido="video-clitoris" class="card-video card-video--pequena" data-ir="contenido-video">
           <span class="card-video__miniatura sin-imagen">falta imagen</span>
-          <span class="card-video__titulo">Vulva 101: lo que el colegio no explicó</span>
-          <span class="card-video__meta">Marta Aguilar · vídeo · 5:00</span>
+          <span class="card-video__titulo">El clítoris entero, en 3 minutos</span>
+          <span class="card-video__meta">Nombre de la autora · vídeo · 3:10</span>
         </button>
-        <button type="button" data-contenido="v-lubricante" class="card-video card-video--pequena" data-ir="contenido-video">
+        <button type="button" data-contenido="video-lubricarse" class="card-video card-video--pequena" data-ir="contenido-video">
           <span class="card-video__miniatura sin-imagen">falta imagen</span>
-          <span class="card-video__titulo">Lubricante: guía rápida para no acertar a ciegas</span>
-          <span class="card-video__meta">Nadia Roldán · vídeo · 3:45</span>
+          <span class="card-video__titulo">Lubricarse no es un examen</span>
+          <span class="card-video__meta">Nombre de la autora · vídeo · 4:05</span>
         </button>
       </div>
     </div>
@@ -844,12 +825,6 @@
         <button type="button" class="chip" data-formato="articulo" aria-pressed="false">Artículos</button>
         <button type="button" class="chip" data-formato="podcast" aria-pressed="false">Podcast</button>
         <button type="button" class="chip" data-formato="video" aria-pressed="false">Vídeos</button>
-        <!-- Botón filtros: abre la hoja con más filtros. Con filtros activos
-             se pone en negro y enseña cuántos hay. Ver js/biblioteca.js -->
-        <button type="button" class="btn-filtros" id="btn-filtros" data-abre="modal-filtros" aria-label="Filtros">
-          <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 4H9M13 4H14M2 12H3M7 12H14" stroke-linecap="round"/><circle cx="11" cy="4" r="2"/><circle cx="5" cy="12" r="2"/></svg>
-          <span class="btn-filtros__cuenta" id="btn-filtros-cuenta" hidden></span>
-        </button>
       </div>
 
       <div class="listas">
@@ -946,20 +921,20 @@
 
       <h2 class="seccion__titulo">Contenido sugerido</h2>
 
-      <button type="button" class="pieza" data-contenido="p-deseo-no-coincide" data-ir="contenido-podcast">
+      <button type="button" class="pieza" data-contenido="podcast-sin-bata" data-ir="contenido-podcast">
         <span class="pieza__miniatura sin-imagen" aria-hidden="true"></span>
         <span class="pieza__textos">
-          <span class="pieza__titulo">Cuando el deseo no coincide</span>
-          <span class="pieza__meta">podcast · 30 min</span>
+          <span class="pieza__titulo">Sin bata</span>
+          <span class="pieza__meta">podcast · 15 min</span>
         </span>
         <span class="btn-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7L8 5Z"/></svg></span>
       </button>
 
-      <button type="button" class="pieza" data-contenido="a-porno-consentimiento" data-ir="contenido-articulo">
+      <button type="button" class="pieza" data-contenido="articulo-consentimiento" data-ir="contenido-articulo">
         <span class="pieza__miniatura sin-imagen" aria-hidden="true"></span>
         <span class="pieza__textos">
-          <span class="pieza__titulo">Lo que el porno no te enseña sobre el consentimiento</span>
-          <span class="pieza__meta">artículo · 6 min</span>
+          <span class="pieza__titulo">Consentimiento cuando ya lleváis años</span>
+          <span class="pieza__meta">artículo · 7 min</span>
         </span>
       </button>
     </div>
@@ -983,16 +958,16 @@
     </div>
   </section>
 
-  <section class="screen screen--tabbed" id="contenido-articulo" aria-label="Contenido · artículo" data-contenido="a-te-cuesta-llegar" hidden>
+  <section class="screen screen--tabbed" id="contenido-articulo" aria-label="Contenido · artículo" data-contenido="articulo-orgasmo" hidden>
     <div class="screen__scroll">
       <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 
       <div class="portada sin-imagen">falta imagen</div>
 
       <div class="contenido__cabecera">
-        <h1 class="t-titular-l contenido__titular" data-campo="titulo">El orgasmo no es la meta (y se nota cuando lo es)</h1>
-        <p class="contenido__meta" data-campo="autor">Autor</p>
-        <p class="contenido__meta" data-campo="duracion">artículo · 6 min de lectura</p>
+        <h1 class="t-titular-l contenido__titular">El orgasmo no es la meta (y se nota cuando lo es)</h1>
+        <p class="contenido__meta">Autor</p>
+        <p class="contenido__meta">artículo · 6 min de lectura</p>
       </div>
 
       <!-- Dos interruptores independientes: una pieza puede estar en las dos listas. -->
@@ -1007,7 +982,7 @@
         </button>
       </div>
 
-      <div class="contenido__cuerpo" data-campo="cuerpo">
+      <div class="contenido__cuerpo">
         <p>Qué pasa cuando todo el encuentro se organiza alrededor de un final obligatorio, y cómo se desmonta ese guion sin perder nada por el camino.</p>
         <p>Sed euismod, nunc ut laoreet dictum, massa sapien tempor urna, vitae fermentum lorem justo nec risus. Praesent dictum, velit non tincidunt vehicula, urna dolor porta ligula.</p>
         <p>Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
@@ -1016,8 +991,8 @@
       <button type="button" class="autoria">
         <img class="autoria__retrato" src="assets/icons/imagen perfil autora.png" alt="">
         <span class="autoria__datos">
-          <span class="autoria__nombre" data-campo="autoria-nombre">Nombre de la autora</span>
-          <span class="autoria__rol" data-campo="autoria-rol">Sexóloga · colegiada nº 0000</span>
+          <span class="autoria__nombre">Nombre de la autora</span>
+          <span class="autoria__rol">Sexóloga · colegiada nº 0000</span>
         </span>
         <span class="autoria__flecha" aria-hidden="true">›</span>
       </button>
@@ -1025,30 +1000,28 @@
       <!-- Bloque de fuente: marcador visible mientras no haya fuente real. -->
       <div class="bloque-fuente">
         <p class="bloque-fuente__titulo">Fuente</p>
-        <p class="bloque-fuente__valor" data-campo="fuente">[Publicación · año · enlace]</p>
+        <p class="bloque-fuente__valor">[Publicación · año · enlace]</p>
       </div>
 
       <hr class="separador-fino">
 
       <h2 class="seccion__titulo">Seguir leyendo</h2>
 
-      <div class="contenido__relacionados" data-campo="relacionados">
-        <button type="button" class="pieza" data-contenido="a-te-cuesta-llegar" data-ir="contenido-articulo">
+      <button type="button" class="pieza" data-contenido="articulo-orgasmo" data-ir="contenido-articulo">
         <span class="pieza__miniatura sin-imagen" aria-hidden="true"></span>
         <span class="pieza__textos">
-          <span class="pieza__titulo">Por qué te cuesta llegar (y no es solo cabeza)</span>
+          <span class="pieza__titulo">El orgasmo no es la meta (y se nota cuando lo es)</span>
           <span class="pieza__meta">artículo · 6 min</span>
         </span>
       </button>
 
-      <button type="button" class="pieza" data-contenido="a-punto-g" data-ir="contenido-articulo">
+      <button type="button" class="pieza" data-contenido="articulo-its" data-ir="contenido-articulo">
         <span class="pieza__miniatura sin-imagen" aria-hidden="true"></span>
         <span class="pieza__textos">
-          <span class="pieza__titulo">El punto G no es un botón mágico</span>
-          <span class="pieza__meta">artículo · 5 min</span>
+          <span class="pieza__titulo">Pruebas de ITS: cuáles, cuándo y cómo pedirlas</span>
+          <span class="pieza__meta">artículo · 8 min</span>
         </span>
       </button>
-      </div>
 
       <!-- Cierra toda pieza de contenido. -->
       <div class="feedback">
@@ -1061,25 +1034,25 @@
     </div>
   </section>
 
-  <section class="screen screen--tabbed" id="contenido-video" aria-label="Contenido · vídeo" data-contenido="v-vulva-101" hidden>
+  <section class="screen screen--tabbed" id="contenido-video" aria-label="Contenido · vídeo" data-contenido="video-clitoris" hidden>
     <div class="screen__scroll screen__scroll--sin-margen">
       <div class="video__cabecera">
         <div class="video__miniatura sin-imagen">falta imagen</div>
         <button type="button" class="btn-play btn-play--sobre-media video__play" data-ir="reproductor" aria-label="Reproducir">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7L8 5Z"/></svg>
         </button>
-        <span class="video__duracion" data-campo="duracion">4:05</span>
+        <span class="video__duracion">4:05</span>
         <button type="button" class="btn-atras video__atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
 
       <div class="video__cuerpo">
         <div class="contenido__cabecera">
-          <h1 class="t-titular-m contenido__titular" data-campo="titulo">El clítoris entero, en 3 minutos</h1>
-          <p class="contenido__meta" data-campo="autor">Autor</p>
+          <h1 class="t-titular-m contenido__titular">El clítoris entero, en 3 minutos</h1>
+          <p class="contenido__meta">Autor</p>
         </div>
 
-        <p class="contenido__descripcion" data-campo="descripcion">La mayor parte no se ve desde fuera. Qué hay debajo, cómo está conectado y por qué cambia bastante las cosas saberlo.</p>
-        <p class="contenido__meta" data-campo="linea">Nombre de la autora · vídeo · 4:05</p>
+        <p class="contenido__descripcion">La mayor parte no se ve desde fuera. Qué hay debajo, cómo está conectado y por qué cambia bastante las cosas saberlo.</p>
+        <p class="contenido__meta">Nombre de la autora · vídeo · 4:05</p>
 
         <div class="acciones-guardar">
           <button type="button" class="accion-guardar" data-guardar="favoritos" aria-pressed="false">
@@ -1095,29 +1068,29 @@
         <button type="button" class="autoria">
           <img class="autoria__retrato" src="assets/icons/imagen perfil autora.png" alt="">
           <span class="autoria__datos">
-            <span class="autoria__nombre" data-campo="autoria-nombre">Nombre de la autora</span>
-            <span class="autoria__rol" data-campo="autoria-rol">Sexóloga · colegiada nº 0000</span>
+            <span class="autoria__nombre">Nombre de la autora</span>
+            <span class="autoria__rol">Sexóloga · colegiada nº 0000</span>
           </span>
           <span class="autoria__flecha" aria-hidden="true">›</span>
         </button>
 
         <div class="bloque-fuente">
           <p class="bloque-fuente__titulo">Fuente</p>
-          <p class="bloque-fuente__valor" data-campo="fuente">[Publicación · año · enlace]</p>
+          <p class="bloque-fuente__valor">[Publicación · año · enlace]</p>
         </div>
 
         <hr class="separador-fino">
         <h2 class="seccion__titulo">Vídeos relacionados</h2>
-        <div class="fila" data-campo="relacionados">
-          <button type="button" data-contenido="v-vulva-101" class="card-video card-video--pequena" data-ir="contenido-video">
+        <div class="fila">
+          <button type="button" data-contenido="video-clitoris" class="card-video card-video--pequena" data-ir="contenido-video">
             <span class="card-video__miniatura sin-imagen">falta imagen</span>
-            <span class="card-video__titulo">Vulva 101: lo que el colegio no explicó</span>
-            <span class="card-video__meta">Marta Aguilar · vídeo · 5:00</span>
+            <span class="card-video__titulo">El clítoris entero, en 3 minutos</span>
+            <span class="card-video__meta">Nombre de la autora · vídeo · 3:10</span>
           </button>
-          <button type="button" data-contenido="v-lubricante" class="card-video card-video--pequena" data-ir="contenido-video">
+          <button type="button" data-contenido="video-lubricarse" class="card-video card-video--pequena" data-ir="contenido-video">
             <span class="card-video__miniatura sin-imagen">falta imagen</span>
-            <span class="card-video__titulo">Lubricante: guía rápida para no acertar a ciegas</span>
-            <span class="card-video__meta">Nadia Roldán · vídeo · 3:45</span>
+            <span class="card-video__titulo">Lubricarse no es un examen</span>
+            <span class="card-video__meta">Nombre de la autora · vídeo · 4:05</span>
           </button>
         </div>
 
@@ -1132,7 +1105,7 @@
     </div>
   </section>
 
-  <section class="screen screen--tabbed" id="contenido-podcast" aria-label="Contenido · podcast" data-contenido="p-lo-que-no-me-contaron" hidden>
+  <section class="screen screen--tabbed" id="contenido-podcast" aria-label="Contenido · podcast" data-contenido="podcast-yo-tampoco" hidden>
     <div class="screen__scroll">
       <div class="podcast__fila-atras">
         <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -1141,10 +1114,10 @@
       <div class="podcast__portada sin-imagen">falta imagen</div>
 
       <div class="podcast__cabecera">
-        <h1 class="t-titular-l contenido__titular" data-campo="titulo">Yo tampoco sabía</h1>
-        <p class="contenido__meta" data-campo="autor">Autor</p>
+        <h1 class="t-titular-l contenido__titular">Yo tampoco sabía</h1>
+        <p class="contenido__meta">Autor</p>
       </div>
-      <p class="contenido__meta" data-campo="linea">Nombre de la autora · podcast · 38 min</p>
+      <p class="contenido__meta">Nombre de la autora · podcast · 38 min</p>
 
       <div class="acciones-guardar">
         <button type="button" class="accion-guardar" data-guardar="favoritos" aria-pressed="false">
@@ -1159,8 +1132,8 @@
 
       <!-- Reproducción simulada: la barra avanza y el tiempo corre, pero
            todavía no hay archivo detrás. -->
-      <div class="progreso"><span class="progreso__hecho" data-campo="progreso" style="width: 27%"></span></div>
-      <div class="tiempos"><span data-campo="transcurrido">12:04</span><span data-campo="restante">-25:56</span></div>
+      <div class="progreso"><span class="progreso__hecho" style="width: 27%"></span></div>
+      <div class="tiempos"><span>12:04</span><span>-25:56</span></div>
 
       <div class="controles">
         <button type="button" class="controles__salto">−15</button>
@@ -1170,20 +1143,20 @@
         <button type="button" class="controles__salto">+15</button>
       </div>
 
-      <p class="contenido__descripcion contenido__descripcion--centrada" data-campo="descripcion">Una conversación sobre lo que nadie nos explicó a tiempo, y sobre cómo se aprende de verdad cuando ya eres adulta.</p>
+      <p class="contenido__descripcion contenido__descripcion--centrada">Una conversación sobre lo que nadie nos explicó a tiempo, y sobre cómo se aprende de verdad cuando ya eres adulta.</p>
 
       <button type="button" class="autoria">
         <img class="autoria__retrato" src="assets/icons/imagen perfil autora.png" alt="">
         <span class="autoria__datos">
-          <span class="autoria__nombre" data-campo="autoria-nombre">Nombre de la autora</span>
-          <span class="autoria__rol" data-campo="autoria-rol">Sexóloga · colegiada nº 0000</span>
+          <span class="autoria__nombre">Nombre de la autora</span>
+          <span class="autoria__rol">Sexóloga · colegiada nº 0000</span>
         </span>
         <span class="autoria__flecha" aria-hidden="true">›</span>
       </button>
 
       <div class="bloque-fuente">
         <p class="bloque-fuente__titulo">Fuente</p>
-        <p class="bloque-fuente__valor" data-campo="fuente">[Publicación · año · enlace]</p>
+        <p class="bloque-fuente__valor">[Publicación · año · enlace]</p>
       </div>
 
       <hr class="separador-fino">
@@ -1204,8 +1177,8 @@
       <div class="reproductor__barra-superior">
         <button type="button" class="btn-atras" data-atras aria-label="Volver"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <span class="reproductor__textos">
-          <span class="reproductor__titulo" data-campo="titulo">El clítoris entero, en 3 minutos</span>
-          <span class="reproductor__autor" data-campo="autor">Autor</span>
+          <span class="reproductor__titulo">El clítoris entero, en 3 minutos</span>
+          <span class="reproductor__autor">Autor</span>
         </span>
       </div>
 
@@ -1222,7 +1195,7 @@
         <div class="reproductor__tiempos">
           <span>00:48</span>
           <span class="reproductor__hueco"></span>
-          <span data-campo="duracion">03:10</span>
+          <span>03:10</span>
           <button type="button" class="reproductor__salir" data-atras aria-label="Salir de pantalla completa"></button>
         </div>
       </div>
@@ -1454,39 +1427,6 @@
     </div>
   </div>
 
-  <!-- Filtros de la Biblioteca. El formato va unido a los chips de fuera:
-       lo que eliges en un sitio se ve en el otro. -->
-  <div class="sheet" id="modal-filtros" role="dialog" aria-modal="true" aria-labelledby="modal-filtros-titulo" data-open="false">
-    <span class="sheet__asa" aria-hidden="true"></span>
-    <h2 class="filtros__titulo" id="modal-filtros-titulo">Filtros</h2>
-    <div class="filtros__grupo">
-      <h3 class="filtros__nombre">Formato</h3>
-      <div class="chips" id="filtros-formato">
-        <button type="button" class="chip" data-formato="articulo" aria-pressed="false">Artículos</button>
-        <button type="button" class="chip" data-formato="podcast" aria-pressed="false">Podcast</button>
-        <button type="button" class="chip" data-formato="video" aria-pressed="false">Vídeos</button>
-      </div>
-    </div>
-    <div class="filtros__grupo">
-      <h3 class="filtros__nombre">Temas</h3>
-      <div class="chips" id="filtros-temas">
-        <button type="button" class="chip" data-tema="Deseo y fantasías" aria-pressed="false">Deseo y fantasías</button>
-        <button type="button" class="chip" data-tema="Falta de deseo" aria-pressed="false">Falta de deseo</button>
-        <button type="button" class="chip" data-tema="Comunicación en pareja" aria-pressed="false">Comunicación en pareja</button>
-        <button type="button" class="chip" data-tema="Consentimiento" aria-pressed="false">Consentimiento</button>
-        <button type="button" class="chip" data-tema="Cómo funciona el cuerpo" aria-pressed="false">Cómo funciona el cuerpo</button>
-        <button type="button" class="chip" data-tema="Salud sexual" aria-pressed="false">Salud sexual</button>
-        <button type="button" class="chip" data-tema="Placer" aria-pressed="false">Placer</button>
-        <button type="button" class="chip" data-tema="Límites" aria-pressed="false">Límites</button>
-        <button type="button" class="chip" data-tema="Celos" aria-pressed="false">Celos</button>
-      </div>
-    </div>
-    <div class="sheet__acciones">
-      <button type="button" class="btn btn--primario" id="filtros-ver" data-cierra>Ver resultados</button>
-      <button type="button" class="btn btn--texto" id="filtros-borrar">Borrar filtros</button>
-    </div>
-  </div>
-
 </main>
 
 <script src="js/state.js"></script>
@@ -1496,8 +1436,6 @@
 <script src="js/onboarding.js"></script>
 <script src="js/mazo.js"></script>
 <script src="js/contenido.js"></script>
-<script src="js/mitos.js"></script>
-<script src="js/plantillas.js"></script>
 <script src="js/biblioteca.js"></script>
 <script src="js/perfil.js"></script>
 <script src="js/app.js"></script>
